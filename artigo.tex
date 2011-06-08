@@ -6,46 +6,62 @@
 
 \usepackage[utf8]{inputenc}
 
-
 \sloppy
 
-\title{Título}
+\title{Groovy on Rails, uma alternativa para o desenvolvimento de aplicações web sem sair da Plataforma Java}
 
-\author{Marcelo Emanoel B. Diniz\inst{1}}
+\author{Marcelo Emanoel Bezerra Diniz\inst{1}}
 
 \address{
-		 Centro de Ciências Tecnológicas -- Universidade de Fortaleza (UNIFOR)\\
-         CEP 60.811-905 -- Fortaleza -- CE -- Brasil
-\nextinstitute
-  Department of Computer Science -- University of Durham\\
-  Durham, U.K.}
+    Centro de Ciências Tecnológicas -- Universidade de Fortaleza (UNIFOR)\\
+    CEP 60.811-905 -- Fortaleza -- CE -- Brasil
+}
 
 \begin{document} 
 
 \maketitle
-     
+
 \begin{resumo} 
-  Este artigo descreve o estilo a ser usado na confecção de artigos e
-  resumos de artigos para publicação nos anais das conferências organizadas
-  pela SBC. É solicitada a escrita de resumo e abstract apenas para os artigos
-  escritos em português. Artigos em inglês deverão apresentar apenas abstract.
-  Nos dois casos, o autor deve tomar cuidado para que o resumo (e o abstract)
-  não ultrapassem 10 linhas cada, sendo que ambos devem estar na primeira
-  página do artigo.
+    Desde seu surgimento a plataforma Java se destaca como uma ótima alternativa para o desenvolvimento de aplicações web.
+    Diversos frameworks surgiram para proporcionar reutilização de código e aumento de produtividade. A plataforma possui 
+    implementações robustas e amplamente utilizadas. Porém, apesar dos esforços, outras tecnologias mais recentes vem se 
+    destacando e tomando a frente no cenário de desenvolvimento de aplicações para a web. Dentre estas tecnologias são notórias
+    algumas características como o uso de linguagens dinâmicas em conjunto com padrões de projeto amplamente conhecidos.
+    Neste artigo será abordado o framework Groovy on Rails, ou simplesmente, Grails. O framework alia a linguagem dinâmica groovy
+    à arquitetura utilizada no Ruby on Rails. 
 \end{resumo}
 
+\section{Introdução}
+    Alta competitividade, baixo custo de produção e manutenção além de alta qualidade são exigências do mercado de desenvolvimento
+    de software. Independentemente da tecnologia envolvida no processo de construção de uma aplicação web, existe o componente de 
+    complexidade inerente ao próprio ambiente. Toda a comunicação é baseada no protocolo HTTP. Sua simplicidade garante a alta 
+    disponibilidade da Web, porém requer um trabalho adicional das aplicações para manter as informações seguras e íntegras.
 
-\section{Groovy on Grails}
-	
-All full papers and posters (short papers) submitted to some SBC conference,
-including any supporting documents, should be written in English or in
-Portuguese. The format paper should be A4 with single column, 3.5 cm for upper
-margin, 2.5 cm for bottom margin and 3.0 cm for lateral margins, without
-headers or footers. The main font must be Times, 12 point nominal size, with 6
-points of space before each paragraph. Page numbers must be suppressed.
+    No cenário previamente descrito a Plataforma Java se destacou desde o seu surgimento. A fim de facilitar o desenvolvimento
+    das aplicações para este ambiente, surgiram diversos frameworks, bases de infra-estruturas extensíveis, voltadas para um nicho
+    em particular. A partir destas o desenvolvedor irá retirar os insumos para a construção de aplicações.
 
-Full papers must respect the page limits defined by the conference.
-Conferences that publish just abstracts ask for \textbf{one}-page texts.
+    Com o passar do tempo outras linguagens dentro e fora da plataforma foram surgindo com propostas um pouco diferentes da linguagem
+    Java. Algumas com características funcionais outras com características totalmente orientadas a objetos. Porém todas com um foco 
+    em comum, aumento de produtividade, possibilitando entregar mais funcionalidades com menos código. Em cima dessas novas linguagens
+    novos frameworks foram sendo desenvolvidos para resolver de forma melhor os antigos problemas.
+    
+    Nesse cenário, por volta do ano de 2006, surgiu o framework Ruby on Rails para a linguagem Ruby. Suas bases advêm do padrão de
+    projeto MVC. Voltado para o desenvolvimento de aplicações web, rapidamente adquiriu adeptos por facilitar e agilizar a criação 
+    de aplicações através de geradores de código para as tarefas comuns além é claro da utilização de uma linguagem de mais fácil
+    compreensão.
+
+    Com a popularização desse conjunto de novas linguagens, implementações baseadas na Java Virtual Machine foram surgindo e através 
+    da JSR 223, a integração de linguagens de script foi facilitada. Nesse contexto uma nova linguagem surgiu, Groovy. Criada especificamente
+    para utilização na JVM propicia a possibilidade de inovação que a tanto a linguagem Java necessita. Além disso, alia o extenso 
+    conjunto de bibliotecas Java pré-existentes às facilidades da nova linguagem de maneira transparente. 
+    
+    Com a popularização do Ruby on Rails muitas de suas funcionalidades passaram foram incorporadas por alguns frameworks mesmo que em 
+    outras linguagens. A abordagem utilizada no Groovy on Rails, Grails, possui algumas similaridades e algumas diferenças. Seu foco está
+    em utilizar fórmulas consagradas na Plataforma Java e aliar às inovações do Rails produzindo um ambiente de alta produtividade utilizando
+    soluções maduras.
+    
+    Nas seções seguintes serão descritos os principais conceitos da linguagem Groovy e do framework Grails.
 
 \section{First Page} \label{sec:firstpage}
 
