@@ -1,10 +1,34 @@
 \documentclass[12pt]{article}
 
 \usepackage{sbc-template}
-
+\usepackage{listings}
 \usepackage{graphicx,url}
-
+\usepackage{framed}
+\usepackage{color}
 \usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+
+\lstdefinelanguage{groovy}{morekeywords={abstract, default, if, private, this, boolean, do, implements, protected, throw, break,
+                                         double, import, public, throws, byte, else, instanceof, return, transient, case, extends,
+                                         int, short, try, catch, final, interface, static, void, char, finally, long, strictfp,
+                                         volatile, class, float, native, super, while, const, for, new, switch, continue, goto,
+                                         package, synchronized, def, any, as, in, with, null, true, false, static},
+                            keywords={[2]params, render,it, flash, redirect },
+                            identifierstyle=\ttfamily,
+                            upquote=true,
+                            breaklines=true,
+                            keywordstyle=\color[RGB]{151,40,120},
+                            keywordstyle={[2]\color[RGB]{102, 204, 255}},
+                            stringstyle=\color[RGB]{255,0,204},
+                            sensitive=true,
+                            morecomment=[l]{//},
+                            morecomment=[s]{/*}{*/},
+                            morestring=[b]",
+                            morestring=[d]',
+                            showtabs=false,
+                            showspaces=false,
+                            showstringspaces=false                            
+                           }
 
 \sloppy
 
@@ -65,7 +89,50 @@
 
 \section{A linguagem Groovy} \label{sec:firstpage}
 
+    A linguagem Groovy é relativamente nova, dinamicamente tipada e que pode ser interpretada ou compilada. Foi elaborada para ser executada 
+    especificamente pela Java Virtual Machine (JVM) e sofreu grande influência das linguagens Ruby, Python, Perl, Smalltalk e obviamente de Java.
     
+    Como dito anteriormente, a linguagem Groovy foi elaborada tendo a JVM como plataforma principal. Isso permitiu que pouca ou nenhuma impedância
+    possa existir entre as linguagens, além disso, esta escolha reduziu de maneira drástica a curva de aprendizado. Sua API, Application Programming 
+    Interface, é toda baseada na API Java padrão, aliado a isto, a integração com a JVM no nível de bytecode permite a interoperabilidade de Java para
+    Groovy bem como o caminho reverso.
+    
+    Dentre as funcionalidades que a linguagem possui é possível citar o uso de closures e propriedades nativas bem como a utilização de meta-programação, 
+    que como conseqüência direta proporciona a criação das chamadas Domain Specific Languages ou simplesmente DSL's.
+
+
+% iniciar uma subseção e falar sobre o básico da linguagem
+% incluir:
+%    shell/console + definição de funções,
+%    Strings: multiline, interpolation
+%    métodos e closures
+%    básico de collections (listas e maps)
+%    syntax sugar: elvis operator, spread operator, remoção de parenteses, remoção de ;
+
+%    A listagem \ref{DescriptiveLabel} ilustra uma classe escrita em Java.
+%
+%   as listagens abaixo incluem os arquivos abaixo.
+
+\lstinputlisting[columns=fullflexible,
+                 captionpos=b,
+                 numbers=left,
+                 language=Java, 
+                 caption=Descriptive Caption Text,
+                 label=DescriptiveLabel,
+                 frame=leftline,
+                 emph={layout},
+                 emphstyle=\underbar]
+                 {SmartReports.java}
+                 
+\lstinputlisting[columns=fixed,
+                captionpos=b,
+                numbers=left,
+                language=groovy, 
+                caption=Descriptive Caption Text,
+                label=DescriptiveLabel,
+                frame=leftline]
+                {LogradouroController.groovy}
+
 
 The first page must display the paper title, the name and address of the
 authors, the abstract in English and ``resumo'' in Portuguese (``resumos'' are
@@ -161,5 +228,6 @@ indented, while the subsequent should be indented by 0.5 cm.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
+\lstlistoflistings
 
 \end{document}
