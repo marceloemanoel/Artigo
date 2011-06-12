@@ -8,11 +8,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 
-\lstdefinelanguage{groovy}{morekeywords={abstract, default, if, private, this, boolean, do, implements, protected, throw, break,
-                                         double, import, public, throws, byte, else, instanceof, return, transient, case, extends,
-                                         int, short, try, catch, final, interface, static, void, char, finally, long, strictfp,
-                                         volatile, class, float, native, super, while, const, for, new, switch, continue, goto,
-                                         package, synchronized, def, any, as, in, with, null, true, false, static},
+% Definição do template de formatação e synthax hightlight para groovy :)
+%
+\lstdefinelanguage{groovy}{morekeywords={abstract, default, if, private, this,
+                                         boolean, do, implements, protected, 
+                                         throw, break, double, import, public, 
+                                         throws, byte, else, instanceof, return,
+                                         transient, case, extends, int, short, 
+                                         try, catch, final, interface, static, 
+                                         void, char, finally, long, strictfp,
+                                         volatile, class, float, native, super, 
+                                         while, const, for, new, switch, continue,
+                                         goto, package, synchronized, def, any, 
+                                         as, in, with, null, true, false, static},
                             keywords={[2]params, render,it, flash, redirect },
                             identifierstyle=\ttfamily,
                             upquote=true,
@@ -32,7 +40,8 @@
 
 \sloppy
 
-\title{Groovy on Rails, uma alternativa para o desenvolvimento de aplicações web sem sair da Plataforma Java}
+\title{Groovy on Rails, uma alternativa para o desenvolvimento de aplicações web
+       sem sair da Plataforma Java}
 
 \author{Marcelo Emanoel Bezerra Diniz\inst{1}}
 
@@ -46,60 +55,123 @@
 \maketitle
 
 \begin{resumo} 
-    Desde seu surgimento a plataforma Java se destaca como uma ótima alternativa para o desenvolvimento de aplicações web.
-    Diversos frameworks surgiram para proporcionar reutilização de código e aumento de produtividade. A plataforma possui 
-    implementações robustas e amplamente utilizadas. Porém, apesar dos esforços, outras tecnologias mais recentes vem se 
-    destacando e tomando a frente no cenário de desenvolvimento de aplicações para a web. Dentre estas tecnologias são notórias
-    algumas características como o uso de linguagens dinâmicas em conjunto com padrões de projeto amplamente conhecidos.
-    Neste artigo será abordado o framework Groovy on Rails, ou simplesmente, Grails. O framework alia a linguagem dinâmica groovy
+    
+    Desde seu surgimento a plataforma Java se destaca como uma ótima alternativa
+    para o desenvolvimento de aplicações web. Diversos frameworks surgiram para 
+    proporcionar reutilização de código e aumento de produtividade. A plataforma
+    possui implementações robustas e amplamente utilizadas. Porém, apesar dos 
+    esforços, outras tecnologias mais recentes vem se destacando e tomando a 
+    frente no cenário de desenvolvimento de aplicações para a web. Dentre estas 
+    tecnologias são notórias algumas características como o uso de linguagens 
+    dinâmicas em conjunto com padrões de projeto amplamente conhecidos. Neste 
+    artigo será abordado o framework Groovy on Rails, ou simplesmente, Grails. 
+    O framework alia a linguagem dinâmica groovy
     à arquitetura utilizada no Ruby on Rails. 
+    
 \end{resumo}
 
 \section{Introdução}
-    Alta competitividade, baixo custo de produção e manutenção além de alta qualidade são exigências do mercado de desenvolvimento
-    de software. Independentemente da tecnologia envolvida no processo de construção de uma aplicação web, existe o componente de 
-    complexidade inerente ao próprio ambiente. Toda a comunicação é baseada no protocolo HTTP. Sua simplicidade garante a alta 
-    disponibilidade da Web, porém requer um trabalho adicional das aplicações para manter as informações seguras e íntegras.
-
-    No cenário previamente descrito a Plataforma Java se destacou desde o seu surgimento. A fim de facilitar o desenvolvimento
-    das aplicações para este ambiente, surgiram diversos frameworks, bases de infra-estruturas extensíveis, voltadas para um nicho
-    em particular. A partir destas o desenvolvedor irá retirar os insumos para a construção de aplicações.
-
-    Com o passar do tempo outras linguagens dentro e fora da plataforma foram surgindo com propostas um pouco diferentes da 
-    linguagem Java. Algumas com características funcionais outras com características totalmente orientadas a objetos. Porém 
-    todas com um foco em comum, aumento de produtividade, possibilitando entregar mais funcionalidades com menos código. Em cima 
-    dessas novas linguagens novos frameworks foram sendo desenvolvidos para resolver de forma melhor os antigos problemas.
     
-    Nesse cenário, por volta do ano de 2006, surgiu o framework Ruby on Rails para a linguagem Ruby. Suas bases advêm do padrão de
-    projeto MVC. Voltado para o desenvolvimento de aplicações web, rapidamente adquiriu adeptos por facilitar e agilizar a criação 
-    de aplicações através de geradores de código para as tarefas comuns além é claro da utilização de uma linguagem de mais fácil
-    compreensão.
+    Alta competitividade, baixo custo de produção e manutenção além de alta 
+    qualidade são exigências do mercado de desenvolvimento de software. 
+    Independentemente da tecnologia envolvida no processo de construção de uma 
+    aplicação web, existe o componente de complexidade inerente ao próprio 
+    ambiente. Toda a comunicação é baseada no protocolo HTTP. Sua simplicidade 
+    garante a alta disponibilidade da Web, porém requer um trabalho adicional 
+    das aplicações para manter as informações seguras e íntegras.
 
-    Com a popularização desse conjunto de novas linguagens, implementações baseadas na Java Virtual Machine foram surgindo e através 
-    da JSR 223, a integração de linguagens de script foi facilitada. Nesse contexto uma nova linguagem surgiu, Groovy. Criada 
-    especificamente para utilização na JVM propicia a possibilidade de inovação que a tanto a linguagem Java necessita. Além 
-    disso, alia o extenso conjunto de bibliotecas Java pré-existentes às facilidades da nova linguagem de maneira transparente. 
-    
-    Com a popularização do Ruby on Rails muitas de suas funcionalidades foram incorporadas por alguns frameworks mesmo que em
-    outras linguagens. A abordagem utilizada no Groovy on Rails, Grails, possui algumas similaridades e algumas diferenças. 
-    Seu foco está em utilizar fórmulas consagradas na Plataforma Java e aliar às inovações do Rails produzindo um ambiente 
-    de alta produtividade utilizando soluções maduras.
-    
-    Nas seções seguintes serão descritos os principais conceitos da linguagem Groovy e do framework Grails.
+    No cenário previamente descrito a Plataforma Java se destacou desde o seu 
+    surgimento. A fim de facilitar o desenvolvimento das aplicações para este 
+    ambiente, surgiram diversos frameworks, bases de infra-estruturas 
+    extensíveis, voltadas para um nicho em particular. A partir destas o 
+    desenvolvedor irá retirar os insumos para a construção de aplicações.
 
-\section{A linguagem Groovy} \label{sec:firstpage}
-
-    A linguagem Groovy é relativamente nova, dinamicamente tipada e que pode ser interpretada ou compilada. Foi elaborada para ser executada 
-    especificamente pela Java Virtual Machine (JVM) e sofreu grande influência das linguagens Ruby, Python, Perl, Smalltalk e obviamente de Java.
+    Com o passar do tempo outras linguagens dentro e fora da plataforma foram 
+    surgindo com propostas um pouco diferentes da linguagem Java. Algumas com 
+    características funcionais outras com características totalmente orientadas 
+    a objetos. Porém todas com um foco em comum, aumento de produtividade, 
+    possibilitando entregar mais funcionalidades com menos código. Em cima 
+    dessas novas linguagens novos frameworks foram sendo desenvolvidos para 
+    resolver de forma melhor os antigos problemas.
     
-    Como dito anteriormente, a linguagem Groovy foi elaborada tendo a JVM como plataforma principal. Isso permitiu que pouca ou nenhuma impedância
-    possa existir entre as linguagens, além disso, esta escolha reduziu de maneira drástica a curva de aprendizado. Sua API, Application Programming 
-    Interface, é toda baseada na API Java padrão, aliado a isto, a integração com a JVM no nível de bytecode permite a interoperabilidade de Java para
-    Groovy bem como o caminho reverso.
-    
-    Dentre as funcionalidades que a linguagem possui é possível citar o uso de closures e propriedades nativas bem como a utilização de meta-programação, 
-    que como conseqüência direta proporciona a criação das chamadas Domain Specific Languages ou simplesmente DSL's.
+    Nesse cenário, por volta do ano de 2006, surgiu o framework Ruby on Rails 
+    para a linguagem Ruby. Suas bases advêm do padrão de projeto MVC. Voltado 
+    para o desenvolvimento de aplicações web, rapidamente adquiriu adeptos por 
+    facilitar e agilizar a criação de aplicações através de geradores de código 
+    para as tarefas comuns além é claro da utilização de uma linguagem de mais 
+    fácil compreensão.
 
+    Com a popularização desse conjunto de novas linguagens, implementações 
+    baseadas na Java Virtual Machine, JVM, foram surgindo. Através da JSR, Java 
+    Specification Request, número 223, a integração de linguagens de script foi 
+    facilitada. Nesse contexto uma nova linguagem surgiu, Groovy. Sua plataforma 
+    única é a JVM, isso significa que o compilador da linguagem produz o mesmo
+    bytecode gerado pelo compilador Java. E que portanto, automaticamente um 
+    extenso conjunto de bibliotecas pré-existentes e maduras pode ser utilizado 
+    na nova linguagem de maneira transparente para o desenvolvedor. 
+    
+    Com a popularização do Ruby on Rails muitas de suas funcionalidades foram 
+    incorporadas por alguns frameworks mesmo que em outras linguagens. A 
+    abordagem utilizada no Groovy on Rails, Grails, possui algumas similaridades 
+    e algumas diferenças. Seu foco está em utilizar fórmulas consagradas na 
+    Plataforma Java e aliar às inovações do Rails produzindo um ambiente de alta 
+    produtividade utilizando soluções maduras.
+    
+    Nas seções seguintes serão descritos os principais conceitos da linguagem 
+    Groovy e do framework Grails.
+
+\section{A linguagem Groovy} \label{sec:linguagem_groovy}
+
+    A linguagem Groovy é relativamente nova, foi criada em  Agosto de 2003, é 4
+    dinamicamente tipada e pode ser interpretada ou compilada. Foi elaborada 
+    para ser executada especificamente pela Java Virtual Machine (JVM) e sofreu 
+    grande influência das linguagens Ruby, Python, Perl, Smalltalk e obviamente 
+    de Java.
+    
+    Como dito anteriormente, a linguagem Groovy foi elaborada tendo a JVM como 
+    plataforma principal. Isso permitiu que pouca ou nenhuma distorção possa 
+    existir entre as linguagens, além disso, esta escolha reduziu de maneira 
+    drástica a curva de aprendizado. Sua API, Application Programming Interface, 
+    é toda baseada na API Java padrão, aliado a isto, a integração com a JVM no 
+    nível de bytecode permite a interoperabilidade de Java para Groovy bem como 
+    o caminho reverso. Dessa maneira, desenvolvedores Java automaticamente 
+    também desenvolvem em Groovy.
+    
+    Dentre as funcionalidades que a linguagem possui é possível citar o uso de 
+    closures,  e propriedades nativas bem como a utilização de meta-programação, 
+    que como conseqüência direta proporciona a criação das chamadas Domain 
+    Specific Languages ou simplesmente DSL's.
+
+\subsection{Instalação}
+    
+    No endereço \url{http://groovy.codehaus.org/Download} é possível fazer o 
+    download das ferramentas necessárias à utilização da linguagem. Lá é possível
+    encontrar instaladores para as plataformas Windows e Debian bem como a versão
+    binária que pode ser usada em qualquer sistema operacional. Para o Mac Os X 
+    é possível utilizar algum dos gerenciadores de pacotes existentes como o 
+    macports ou o homebrew.
+    
+    Neste artigo será exemplificada a instalação a partir da versão binária pela 
+    independência de plataforma. O primeiro passo é descompactar o arquivo em 
+    algum diretório e criar a variável de ambiente \emph{GROOVY\_HOME} que aponta 
+    para o diretório em questão. O passo seguinte é adicionar ao \emph{PATH} do 
+    ambiente a variável recém criada. Caso ainda não exista, é necessário criar 
+    a variável de ambiente \emph{JAVA\_HOME} que aponta para o diretório da 
+    instalação do Java Development Kit.
+    
+    Após os passos do parágrafo anterior deve ser possível agora executar no 
+    console os comandos:
+    
+    \begin{itemize}
+        \item groovysh %Groovy Shell
+        \item groovyConsole %Groovy Console (Aplicação em Swing)
+        \item groovy %Compila/Executa um arquivo groovy
+        \item groovyc %Compila um arquivo .groovy em .class
+    \end{itemize}
+    
+\subsection{Groovy Script}
+    
+    
 
 % iniciar uma subseção e falar sobre o básico da linguagem
 % incluir:
@@ -107,7 +179,8 @@
 %    Strings: multiline, interpolation
 %    métodos e closures
 %    básico de collections (listas e maps)
-%    syntax sugar: elvis operator, spread operator, remoção de parenteses, remoção de ;
+%    syntax sugar: elvis operator, spread operator, remoção de parenteses, 
+%                  remoção de ;
 
 %    A listagem \ref{DescriptiveLabel} ilustra uma classe escrita em Java.
 %
