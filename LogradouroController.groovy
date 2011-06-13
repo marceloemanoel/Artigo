@@ -14,10 +14,12 @@ class LogradouroController {
 
         if (logradouro) {
             dados = [
-                        logradouro: logradouro.nome,
+                     '''
+   						logradouro: logradouro.nome,
                         bairro: logradouro.bairro.nome,
                         bairro_id: logradouro.bairro.id,
                         municipio: logradouro.bairro.municipio.nome
+					'''
                     ]
 
             dados = [result: dados]

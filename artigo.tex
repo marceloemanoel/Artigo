@@ -1,42 +1,82 @@
 \documentclass[12pt]{article}
 
 \usepackage{sbc-template}
+\usepackage{textcomp}
 \usepackage{listings}
 \usepackage{graphicx,url}
 \usepackage{framed}
 \usepackage{color}
 \usepackage[utf8]{inputenc}
-\usepackage{textcomp}
 
 % Definição do template de formatação e synthax hightlight para groovy :)
 %
-\lstdefinelanguage{groovy}{morekeywords={abstract, default, if, private, this,
-                                         boolean, do, implements, protected, 
-                                         throw, break, double, import, public, 
-                                         throws, byte, else, instanceof, return,
-                                         transient, case, extends, int, short, 
-                                         try, catch, final, interface, static, 
-                                         void, char, finally, long, strictfp,
-                                         volatile, class, float, native, super, 
-                                         while, const, for, new, switch, continue,
-                                         goto, package, synchronized, def, any, 
-                                         as, in, with, null, true, false, static},
-                            keywords={[2]params, render,it, flash, redirect },
-                            identifierstyle=\ttfamily,
+\lstdefinelanguage{Groovy}{keywords={
+                                            abstract, default, if, private, this,
+                                            boolean, do, implements, protected, 
+                                            throw, break, double, import, public, 
+                                            throws, byte, else, instanceof, return,
+                                            transient, case, extends, int, short, 
+                                            try, catch, final, interface, static, 
+                                            void, char, finally, long, strictfp,
+                                            volatile, class, float, native, super, 
+                                            while, const, for, new, switch, continue,
+                                            goto, package, synchronized, def, any, 
+                                            as, in, with, null, true, false, static
+                                },
+                                keywords={[2]params, render,it, flash, redirect},
+                                morecomment=[l]{//},
+                                morecomment=[s]{/*}{*/},
+                                morestring=[b]",
+                                morestring=[d]',
+                                morestring=[b]""",
+                                morestring=[b]''',
+                                morestring=[d]/
+                           }
+
+%
+%   Definição de estilos das linguagens
+%
+%\lstdefinestyle{Listagem}{
+%                        \lstlistingname
+%                        }
+\lstdefinestyle{Groovy}{
                             upquote=true,
-                            breaklines=true,
+                            basicstyle=\small,
                             keywordstyle=\color[RGB]{151,40,120},
                             keywordstyle={[2]\color[RGB]{102, 204, 255}},
-                            stringstyle=\color[RGB]{255,0,204},
-                            sensitive=true,
-                            morecomment=[l]{//},
-                            morecomment=[s]{/*}{*/},
-                            morestring=[b]",
-                            morestring=[d]',
+                            stringstyle={\color[RGB]{255,0,204}
+                                         \ttfamily
+                                         \small
+                            },
+                            identifierstyle=\ttfamily,
+                            breaklines=true,
                             showtabs=false,
                             showspaces=false,
-                            showstringspaces=false                            
-                           }
+                            showstringspaces=false,
+                            columns=fullflexible,
+                            numbers=left,
+                            language=Groovy,
+                            frame=leftline
+                       }
+\lstdefinestyle{InlineGroovy}{
+                           style=Groovy,
+                           numbers=none,
+                      }
+\lstdefinestyle{Java}{
+                        keywordstyle={\color[RGB]{127,0,85} \ttfamily \small },
+                        stringstyle={\color[RGB]{42,0,255} \ttfamily \small},
+                        commentstyle={\color[RGB]{63,127,95} \ttfamily \small},
+                        upquote=true,
+                        basicstyle=\small,
+                        breaklines=true,
+                        showtabs=false,
+                        showspaces=false,
+                        showstringspaces=false,
+                        columns=fullflexible,
+                        numbers=left,
+                        language=Java, 
+                        frame=leftline                   
+                     }
 
 \sloppy
 
@@ -72,7 +112,7 @@
 
 \section{Introdução}
     
-    Alta competitividade, baixo custo de produção e manutenção além de alta 
+    Alta competitividade, baixo custo de produção e manutenção, além de alta 
     qualidade são exigências do mercado de desenvolvimento de software. 
     Independentemente da tecnologia envolvida no processo de construção de uma 
     aplicação web, existe o componente de complexidade inerente ao próprio 
@@ -80,7 +120,7 @@
     garante a alta disponibilidade da Web, porém requer um trabalho adicional 
     das aplicações para manter as informações seguras e íntegras.
 
-    No cenário previamente descrito a Plataforma Java se destacou desde o seu 
+    No cenário previamente descrito, a Plataforma Java se destacou desde o seu 
     surgimento. A fim de facilitar o desenvolvimento das aplicações para este 
     ambiente, surgiram diversos frameworks, bases de infra-estruturas 
     extensíveis, voltadas para um nicho em particular. A partir destas o 
@@ -88,10 +128,10 @@
 
     Com o passar do tempo outras linguagens dentro e fora da plataforma foram 
     surgindo com propostas um pouco diferentes da linguagem Java. Algumas com 
-    características funcionais outras com características totalmente orientadas 
+    características funcionais, outras com características totalmente orientadas 
     a objetos. Porém todas com um foco em comum, aumento de produtividade, 
     possibilitando entregar mais funcionalidades com menos código. Em cima 
-    dessas novas linguagens novos frameworks foram sendo desenvolvidos para 
+    dessas novas linguagens, novos frameworks foram sendo desenvolvidos para 
     resolver de forma melhor os antigos problemas.
     
     Nesse cenário, por volta do ano de 2006, surgiu o framework Ruby on Rails 
@@ -122,7 +162,7 @@
 
 \section{A linguagem Groovy} \label{sec:linguagem_groovy}
 
-    A linguagem Groovy é relativamente nova, foi criada em  Agosto de 2003, é 4
+    A linguagem Groovy é relativamente nova, foi criada em  Agosto de 2003, é 
     dinamicamente tipada e pode ser interpretada ou compilada. Foi elaborada 
     para ser executada especificamente pela Java Virtual Machine (JVM) e sofreu 
     grande influência das linguagens Ruby, Python, Perl, Smalltalk e obviamente 
@@ -171,41 +211,152 @@
     
 \subsection{Groovy Script}
     
+    Como dito anteriormente, Groovy pode ser utilizado como uma linguagem de 
+    script para execução de tarefas rápidas. Para exemplificar, veremos o clássico
+    exemplo HelloWorld utilizando Groovy como script. A listagem \ref{HelloGroovyScript}
+    mostra o conteúdo do arquivo Hello.groovy. 
     
+    \lstinputlisting[
+                        style=Groovy,
+                        caption=Hello World Groovy Script,
+                        label=HelloGroovyScript
+                    ]
+                    {Hello.groovy}
 
+    Executando o comando:
+    \begin{lstlisting}[language=]
+        groovy Hello.groovy
+    \end{lstlisting}
+    
+    O resultado, como esperado, é que no console o texto "Hello Groovy Script World"
+    seja impresso. Isso acontece por que o interpretador internamente cria um 
+    método main e insere o código contido no arquivo Hello.groovy. O código Java
+    equivalente pode ser observado na listagem \ref{HelloGroovyScriptInJava}.
+    
+    \lstinputlisting[
+                        style=Java,
+                        caption=Hello World Groovy Script em Java,
+                        label=HelloGroovyScriptInJava
+                    ]
+                    {Hello.java}
+
+\subsubsection{Funções de Script}
+
+    Assim como outras linguagens de script é possível criar blocos de código 
+    reutilizáveis, as funções. A listagem \ref{HelloGroovyScriptWithFunctions} 
+    fornece um exemplo da sintaxe utilizada para a declaração de funções.
+    
+    \lstinputlisting[
+                        style=Groovy,
+                        caption=Hello World Groovy Script Com Funções,
+                        label=HelloGroovyScriptWithFunctions,
+                    ]
+                    {HelloWithFunctions.groovy}
+   
+
+\subsection{Strings}
+
+    Strings em Groovy podem ser definidas de até cinco formas diferentes, são elas:
+    
+    \begin{enumerate}
+        \item entre aspas duplas: 
+            \begin{lstlisting}[style=InlineGroovy]
+                "Marcelo Emanoel"
+            \end{lstlisting}
+        \item entre aspas simples:
+            \begin{lstlisting}[style=InlineGroovy]
+                'Marcelo Emanoel'
+            \end{lstlisting}
+        \item entre barras:
+            \begin{lstlisting}[style=InlineGroovy]
+                /Marcelo Emanoel/
+            \end{lstlisting}
+        \item entre três aspas duplas: 
+            \begin{lstlisting}[style=InlineGroovy]
+                """Marcelo Emanoel"""
+            \end{lstlisting}
+        \item entre três aspas simples:
+            \begin{lstlisting}[style=InlineGroovy]
+                '''Marcelo Emanoel'''
+            \end{lstlisting}
+
+    \end{enumerate}
+    
+    A depender da forma declarada é possível que a string produzida aceite ou não
+    o uso de interpolação, ou seja, a inserção de expressões que serão avaliadas
+    e concatenadas à string. A listagem \ref{HelloGroovyScriptWithFunctions} exibe
+    este conceito na linha 2 onde o resultado da expressão delimitada por \$\{ e \}
+    é concatenado à string. A listagem \ref{HelloGroovyScriptWithFunctionsInJava}
+    exibe o código Java equivalente.
+    
+    \lstinputlisting[
+                        style=Java,
+                        caption=Hello World Groovy Script Com Funções Em Java,
+                        label=HelloGroovyScriptWithFunctionsInJava
+                    ]
+                    {HelloWithFunctions.java}
+
+    Dentre as formas descritas anteriormente apenas as seguintes aceitam 
+    interpolação: 1, 3 e 4. O resultado da tentativa de utilização da técnica com
+    os outros tipos de declarações de string resulta na concatenação da expressão
+    não avaliada, ou seja, a própria expressão. Como por exemplo \textbf{\$\{name\}}
+    na string final. 
+
+    Os tipos 4 e 5 citados anteriormente produzem um tipo especial de string que
+    pode ser expandido por mais de uma linha, por isso são chamados de multilinhas.
+    Uma utilização prática e direta da interpolação de strings em conjunto com as
+    strings multilinhas é a criação de templates de forma transparente. 
+    
+    Como dito anteriormente, uma outra forma de declarar uma string é inserindo
+    conteúdo entre \emph{/}. Esse tipo de declaração permite criar valores sem 
+    ter que escapar caracteres especiais com exceção do próprio \emph{/}. Assim, 
+    é possível simplificar por exemplo a escrita de expressões regulares como 
+    mostra a listagem \ref{SlashyStringWithRegex}.
+    
+    \lstinputlisting[
+                        style=Groovy,
+                        caption=Simplificação de Expressões Regulares com Slashy Strings,
+                        label=SlashyStringWithRegex
+                    ]
+                    {SlashyStringWithRegex.groovy}
+
+\subsection{Métodos e Closures}
+
+    A linguagem possibilita duas formas de estruturação de blocos de código 
+    reutilizáveis. Métodos ou Funções e Closures. A sintaxe de definição de métodos
+    é bastante simples e já foi vista nos exemplos anteriores. É necessário apenas
+    que se façam alguns esclarecimentos sobre métodos:
+
+    \begin{enumerate}
+        \item O tipo de retorno do método bem como a palavra chave \emph{return}
+              são opcionais. Por padrão o resultado da avaliação da última linha
+              do método é retornada.
+        \item Por padrão, propriedades, métodos e classes são públicos. Para alterar
+              este comportamento basta utilizar o modificador de acesso correspondente
+              para a visibilidade pretendida.
+        \item É possível definir parâmetros como valores padrão. Isso possibilita
+              que o mesmo método possa ser chamado de diferentes formas. A listagem
+              \ref{MethodWithDefaultParameters} exemplifica a sintaxe da declaração.
+              
+    \end{enumerate}
+    
+    \lstinputlisting[
+                        style=Groovy,
+                        caption=Método com parâmetros com valores padrão,
+                        label=MethodWithDefaultParameters
+                    ]
+                    {MethodWithDefaultParameters.groovy}
+                    
+    
 % iniciar uma subseção e falar sobre o básico da linguagem
 % incluir:
-%    shell/console + definição de funções,
-%    Strings: multiline, interpolation
-%    métodos e closures
+%    shell/console + definição de funções, -> DONE
+%    Strings: multiline, interpolation -> DONE
+%    métodos -> DONE
+%    closures
 %    básico de collections (listas e maps)
 %    syntax sugar: elvis operator, spread operator, remoção de parenteses, 
 %                  remoção de ;
-
-%    A listagem \ref{DescriptiveLabel} ilustra uma classe escrita em Java.
-%
-%   as listagens abaixo incluem os arquivos abaixo.
-
-\lstinputlisting[columns=fullflexible,
-                 captionpos=b,
-                 numbers=left,
-                 language=Java, 
-                 caption=Descriptive Caption Text,
-                 label=DescriptiveLabel,
-                 frame=leftline,
-                 emph={layout},
-                 emphstyle=\underbar]
-                 {SmartReports.java}
-                 
-\lstinputlisting[columns=fixed,
-                captionpos=b,
-                numbers=left,
-                language=groovy, 
-                caption=Descriptive Caption Text,
-                label=DescriptiveLabel,
-                frame=leftline]
-                {LogradouroController.groovy}
-
 
 The first page must display the paper title, the name and address of the
 authors, the abstract in English and ``resumo'' in Portuguese (``resumos'' are
