@@ -7,6 +7,7 @@
 \usepackage{framed}
 \usepackage{color}
 \usepackage[utf8]{inputenc}
+\usepackage{fontenc}
 
 % Definição do template de formatação e synthax hightlight para groovy :)
 %
@@ -30,7 +31,7 @@
                                 morestring=[d]',
                                 morestring=[b]""",
                                 morestring=[b]''',
-                                morestring=[d]/
+                                morestring=[b]/
                            }
 
 %
@@ -56,6 +57,7 @@
                             columns=fullflexible,
                             numbers=left,
                             language=Groovy,
+                            extendedchars=true,
                             frame=leftline
                        }
 \lstdefinestyle{InlineGroovy}{
@@ -202,12 +204,12 @@
     Após os passos do parágrafo anterior deve ser possível agora executar no 
     console os comandos:
     
-    \begin{itemize}
-        \item groovysh %Groovy Shell
-        \item groovyConsole %Groovy Console (Aplicação em Swing)
-        \item groovy %Compila/Executa um arquivo groovy
-        \item groovyc %Compila um arquivo .groovy em .class
-    \end{itemize}
+    \begin{description}
+        \item [groovysh:] Abre o Groovy Shell
+        \item [groovyConsole:] Abre o console gráfico do Groovy 
+        \item [groovy:] Executa um arquivo groovy
+        \item [groovyc:] Compila um arquivo .groovy em .class
+    \end{description}
     
 \subsection{Groovy Script}
     
@@ -337,7 +339,6 @@
         \item É possível definir parâmetros como valores padrão. Isso possibilita
               que o mesmo método possa ser chamado de diferentes formas. A listagem
               \ref{MethodWithDefaultParameters} exemplifica a sintaxe da declaração.
-              
     \end{enumerate}
     
     \lstinputlisting[
@@ -346,7 +347,28 @@
                         label=MethodWithDefaultParameters
                     ]
                     {MethodWithDefaultParameters.groovy}
-                    
+
+\subsection{Closures}
+
+    Closures são pedaços de código reutilizáveis que possuem escopo e podem ser 
+    retornados a partir de métodos, atribuídos a propriedades ou variáveis e 
+    ainda podem ser utilizados como argumentos em uma chamada de método. 
+    
+    Estruturas representadas através da notação \{ ... \} representam o closures.
+    O código dentro das chaves é executado sempre que a closure é invocada, funcionando
+    de maneira similar aos métodos, podem inclusive ter parâmetros. A diferença 
+    básica entre os dois é que as primeiras são objetos enquanto os últimos não. 
+    A listagem \ref{HelloClosures} exemplifica a construção de uma closure e sua 
+    execução.
+    
+    \lstinputlisting[
+                        style=Groovy,
+                        caption=Exemplo de definição e chamada de closures,
+                        label=HelloClosures,
+                        escapeinside=-+
+                    ]
+                    {HelloClosures.groovy}
+    
     
 % iniciar uma subseção e falar sobre o básico da linguagem
 % incluir:
@@ -431,6 +453,5 @@ indented, while the subsequent should be indented by 0.5 cm.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
-\lstlistoflistings
 
 \end{document}
