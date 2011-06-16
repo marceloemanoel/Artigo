@@ -317,7 +317,8 @@
     
     \lstinputlisting[
                         style=Groovy,
-                        caption=Simplificação de Expressões Regulares com Slashy Strings,
+                        caption=Simplificação de Expressões Regulares com Slashy 
+                                Strings,
                         label=SlashyStringWithRegex
                     ]
                     {SlashyStringWithRegex.groovy}
@@ -355,11 +356,11 @@
     ainda podem ser utilizados como argumentos em uma chamada de método. 
     
     Estruturas representadas através da notação \{ ... \} representam o closures.
-    O código dentro das chaves é executado sempre que a closure é invocada, funcionando
-    de maneira similar aos métodos, podem inclusive ter parâmetros. A diferença 
-    básica entre os dois é que as primeiras são objetos enquanto os últimos não. 
-    A listagem \ref{HelloClosures} exemplifica a construção de uma closure e sua 
-    execução.
+    O código dentro das chaves é executado sempre que a closure é invocada, 
+    funcionando de maneira similar aos métodos, podem inclusive ter parâmetros. 
+    A diferença básica entre os dois é que as primeiras são objetos enquanto os 
+    últimos não. A listagem \ref{HelloClosures} exemplifica a construção de uma 
+    closure e sua execução.
     
     \lstinputlisting[
                         style=Groovy,
@@ -369,13 +370,49 @@
                     ]
                     {HelloClosures.groovy}
     
+\subsection{Collections}
+
+    Groovy possui vários tipos de coleções incluindo listas, mapas, conjuntos,
+    arrays e intervalos. Neste artigo, apenas listas e mapas serão explicados.
     
+\subsubsection{Listas}
+
+    Assim como em Java, uma lista em Groovy é uma coleção ordernada de objetos.
+    Listas em Groovy são uma implementação da interface \emph{java.util.List} sua 
+    sintaxe de declaração é semelhante à de arrays como pode ser visto na 
+    Listagem \ref{GroovyLists}.
+    
+    \lstinputlisting[
+                        style=Groovy,
+                        caption=Listas,
+                        label=GroovyLists
+                    ]
+                    {GroovyLists.groovy}
+
+\subsubsection{Mapas}
+
+    Assim como em Java, um mapa em Groovy é uma coleção não ordenada de pares 
+    chave/valor onde as chaves são únicas. A implementação padrão utilizada em 
+    Groovy para um mapa é a \emph{java.util.LinkedHashMap} entretanto é possível
+    utilizar outras implementações bastando apenas inicializar a variável com o 
+    tipo desejado.
+    
+    De maneira semelhante às listas os mapas podem ser declarados com a notação
+    de arrays onde as chaves não são números. A listagem \ref{GroovyMaps} exemplifica
+    a utilização de mapas.
+    
+    \lstinputlisting[
+                        style=Groovy,
+                        caption=Mapas,
+                        labelGroovyMaps
+                    ]
+                    {GroovyMaps.groovy}
 % iniciar uma subseção e falar sobre o básico da linguagem
 % incluir:
 %    shell/console + definição de funções -> DONE
 %    Strings: multiline, interpolation -> DONE
 %    métodos -> DONE
-%    closures
+%    closures -> DONE
 %    básico de collections:
 %       listas
 %       mapas
