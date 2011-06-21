@@ -408,6 +408,84 @@
                     ]
                     {GroovyMaps.groovy}
 	
+\subsection{Sobrescrita de Operadores}	
+	
+	Em algumas linguagens é possível redefinir operadores, como por exemplo em C++ e
+	Ruby. Diferente de Java, Groovy também permite que seus usuários redefinam os operadores.
+	A maneira utilizada para que um operador seja redefinido é através da definição
+	de métodos com assinaturas específicas. Assim, é possível, por exemplo, fazer com que dois
+	objetos do tipo BigDecimal possam ser adicionados utilizando o operador de adição +. A tabela 
+	\ref{tab:OperatorDefinition} exibe os métodos que precisam ser definidos para a utilização dos
+	respectivos operadores.
+
+	\begin{table}
+		\caption{Sobrescrita de Operadores}
+		\label{tab:OperatorDefinition}
+		\begin{tabular}{|c|c|}
+		\hline
+		{\bf Operador} & {\bf Método} \\
+		\hline
+			 a + b &  a.plus(b) \\
+		\hline
+			 a - b & a.minus(b) \\
+		\hline
+			 a * b & a.multiply(b) \\
+		\hline
+			 a / b &   a.div(b) \\
+		\hline
+			a \% b &   a.mod(b) \\
+		\hline
+			   a++ & \multicolumn{ 1}{|c|}{a.next()} \\
+			   ++a & \multicolumn{ 1}{|c|}{} \\
+		\hline
+			   a-- & \multicolumn{ 1}{|c|}{a.previous()} \\
+			   --a & \multicolumn{ 1}{|c|}{} \\
+		\hline
+			  a ** b & a.power(b) \\
+		\hline
+			   a \texttt{|} b &    a.or(b) \\
+		\hline
+			   a \texttt{\&} b &   a.and(b) \\
+		\hline
+			   a \texttt{\^} b &   a.xor(b) \\
+		\hline
+				\texttt{\~}a & a.bitwiseNegate() \\
+		\hline
+				a+ & a.postive() \\
+		\hline
+				-a & a.negative() \\
+		\hline
+			  a[b] &   a.get(b) \\
+		\hline
+		  a[b] = c & a.putAt(b, c) \\
+		\hline
+			a \texttt{<<} b & a.leftShift(b) \\
+		\hline
+			a \texttt{>>} b & a.rightShift(b) \\
+		\hline
+		   a \texttt{>>>} b & a.rightShiftUnsigned(b) \\
+		\hline
+			a == b & a.equals(b) \\
+		\hline
+			a != b & !a.equals(b) \\
+		\hline
+		   a \texttt{<=>} b & a.compareTo(b) \\
+		\hline
+			 a \texttt{>} b & a.compareTo(b) \texttt{>} 0 \\
+		\hline
+			a \texttt{>=} b & a.compareTo(b) \texttt{>=} 0 \\
+		\hline
+			 a \texttt{<} b & a.compareTo(b) \texttt{<} 0 \\
+		\hline
+			a \texttt{<=} b & a.compareTo(b) \texttt{<= 0} \\
+		\hline
+			a as b & a.asType(B) \\
+		\hline
+			switch(a) \{case(b) : ... \} 
+			& b.isCase(a) \\
+		\hline
+		\end{tabular}  
+	\end{table}
 	
 % iniciar uma subseção e falar sobre o básico da linguagem
 % incluir:
@@ -416,22 +494,12 @@
 %    métodos -> DONE
 %    closures -> DONE
 %    básico de collections:
-%       listas
-%       mapas
-%    syntax sugar: 
-%       elvis operator
-%       spread operator
-%       remoção de parenteses
-%       remoção de ';'
-
-
-\section{CD-ROMs and Printed Proceedings}
-
-In some conferences, the papers are published on CD-ROM while only the
-abstract is published in the printed Proceedings. In this case, authors are
-invited to prepare two final versions of the paper. One, complete, to be
-published on the CD and the other, containing only the first page, with
-abstract and ``resumo'' (for papers in Portuguese).
+%       listas -> DONE
+%       mapas -> DONE
+%	 operators 
+%	 	overloading
+%	    elvis operator
+%   	spread operator
 
 \section{Figures and Captions}\label{sec:figs}
 
