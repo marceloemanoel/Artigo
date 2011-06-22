@@ -1,0 +1,1 @@
+String clientName = (client.getName() == null ? "default" : client.getName());

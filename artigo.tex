@@ -415,8 +415,9 @@
     para tanto, se utiliza de métodos com assinaturas pré-definidas nas classes.
     Assim, é possível, por exemplo, fazer com que dois objetos do tipo BigDecimal
     possam ser adicionados utilizando o operador de adição +. A tabela 
-    \ref{tab:OperatorDefinition} exibe os métodos que precisam ser definidos para
-    a utilização dos respectivos operadores.
+    \ref{tab:OperatorDefinition}, retirada do cartão de referência de \cite{rfcard} 
+	exibe os métodos que precisam ser definidos para a utilização dos respectivos 
+	operadores.
 
     \begin{table}[h]
         \centering
@@ -460,12 +461,31 @@
 
 \subsection{Operadores Especiais}
 
-    bla bla bla
+    Além dos operadores exibidos na tabela \ref{tab:OperatorDefinition} Groovy 
+	oferece outros específicos.
 
 \subsubsection{Operador Elvis}
 
-    bla bla bla
-
+    De acordo com \cite{beginingGroovy:2008} o operador elvis (?:) é equivalente
+	ao operador de if ternário em Java, como demonstra a listagem \ref{ternaryIfJava}.
+	Em Groovy o operador Elvis permite a escrita de maneira ainda mais concisa 
+	como pode ser visto na listagem \ref{elvisOperatorGroovy} com o código equivalente.
+	
+	\lstinputlisting[
+						style=Java,
+						caption=Funcionamento do If Ternário em Java,
+						label=ternaryIfJava
+					]
+					{TernaryIfJava.java}
+	
+	\lstinputlisting[
+						style=Groovy,
+						caption=Funcionamento do Operador Elvis,
+						label=elvisOperatorGroovy
+					]
+					{ElvisOperator.groovy}
+					
+					
 \subsubsection{Operador Spread}
 
 
