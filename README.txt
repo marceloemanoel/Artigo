@@ -10,6 +10,6 @@ frente no cenário de desenvolvimento de aplicações para a web. Dentre estas
 tecnologias são notórias algumas características como o uso de linguagens 
 dinâmicas em conjunto com padrões de projeto amplamente conhecidos. Neste 
 artigo será abordado o framework Groovy on Rails, ou simplesmente, Grails. 
-O framework alia a linguagem dinâmica groovy
-à arquitetura utilizada no Ruby on Rails.
+O framework alia a linguagem dinâmica groovy à arquitetura utilizada no Ruby
+on Rails.
 
