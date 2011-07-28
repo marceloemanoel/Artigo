@@ -489,6 +489,19 @@
                     
 \subsubsection{Operador Spread}
 
+    O operador de spread (*.) como explicado na seção de operadores especiais do
+    livro Beginning Groovy and Grails From Novice to Professional\cite{beginingGroovy:2008} 
+    permite que uma operação seja realizada nos itens de uma coleção de maneira 
+    mais sucinta. A listagem a \ref{SpreadOperator} reproduz a listagem listagem
+    2-35 do livro citado no início do parágrafo exemplificando duas maneiras de 
+    iterar numa lista, através da closure collect() e do operador de spread.
+    
+    \lstinputlisting[
+                        style=Groovy,
+                        caption=Listagem 2-35 do livro Beginning Groovy and Grails From Novice to Professional,
+                        label=SpreadOperator
+                    ]
+                    {src/groovy/SpreadOperator.groovy}
 
 % iniciar uma subseção e falar sobre o básico da linguagem
 % incluir:
@@ -501,9 +514,23 @@
 %       mapas -> DONE
 %    operators 
 %       overloading -> DONE
-%       elvis operator
-%       spread operator
+%       elvis operator -> DONE
+%       spread operator -> DONE
 %
+
+\subsection{Grails Framework}
+
+%iniciar uma subseção e falar sobre o grails
+%incluir:
+%   introdução ao grails
+%   instalação
+%   convention-over-configuration
+%   domain classes
+%   controllers
+%   views
+%   scaffolding
+%   GORM
+%   plugins
 %\section{Figures and Captions}\label{sec:figs}
 %
 %Figure and table captions should be centered if less than one line
