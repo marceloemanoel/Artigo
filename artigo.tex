@@ -534,6 +534,8 @@
     
 \subsubsection{Instalação}
     
+    %   PRECISA DE REFACTORING!
+    De acordo com \cite{grails} os passos para a instalação do Grails são os seguintes.
     O primeiro passo para a instalação do Grails é ter instalado o Java SDK, 
     versão 5.0 ou superior, com a variável de ambiente JAVA\_HOME devidamente 
     instalada apontando para o diretório de instalação do SDK. O próximo passo 
@@ -556,15 +558,89 @@
         \item sudo apt-get update
         \item sudo apt-get install grails
     \end{enumerate}
+
+\subsubsection{Primeira Aplicação Grails: Google Contacts Clone}
+
+    A fim de entender o funcionamento do framework será criada uma aplicação web
+    que vai explorar de uma maneira mais dinâmica as principais funcionalidades
+    oferecidas.
     
+    A aplicação é um clone do Google Contacts. Uma Agenda de contatos onde cada 
+    \textbf{contato} pode pertecer a um ou mais \textbf{grupos}. Cada \textbf{contato}
+    possui foto, endereços de email e físico, telefone(s), url de site, endereço 
+    de perfil no google e etc. Na aplicação é possível \emph{listar todos} os 
+    \textbf{contatos}, \emph{listar} os \textbf{contatos} agrupados, 
+    \emph{adicionar} \textbf{grupos}, \emph{associar} \textbf{contatos} a um \textbf{grupo},
+    \emph{exibir}, \emph{editar}, \emph{salvar} e \emph{apagar} \textbf{contatos} e etc.
+    
+    A primeira atividade necessária é criar a aplicação, para isso é necessário
+    digitar no console/terminal o seguinte comando:
+    
+    \begin{lstlisting}[language=]
+        grails create-app contacts
+    \end{lstlisting}
+    
+    Isso irá acionar o grails e ele irá criar toda a estrutura inicial necessária para
+    o funcionamento do projeto. A partir deste momento a aplicação já pode ser 
+    executada, para tanto entre no diretório criado e digite o comando:
+    
+    \begin{lstlisting}[language=]
+        grails run-app
+    \end{lstlisting}
+    
+    Imediatamente uma instância do container web jetty será criada e estará a
+    espera de conexões na porta 8080 por padrão. Para testar se a aplicação está
+    sendo executada é possível acessar o endereço \url{http://localhost:8080/contacts} 
+    e o resultado deve ser semelhante ao da imagem \ref{fig:firstRun}
+    
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/firstRun.jpg}
+    \caption{Primeira execução da aplicação Contacts}
+    \label{fig:firstRun}
+    \end{figure}
+    
+    O script de criação da aplicação criou a estrutura de diretórios que pode ser
+    visualizada na imagem \ref{fig:appStructure}.
+    
+    \begin{description}
+       \item [grails-app:] Diretório principal da aplicação é composto pelos diretórios a seguir:
+            \begin{description}
+                \item[conf:] contém os arquivos de configuração da aplicação
+                \item[controllers:] contém todas as classes que executam a função de controllers na aplicação, corresponde ao C do MVC
+                \item[domain:] contém as domain classes, representam entidades da aplicação, são automaticamente persistentes, corresponde ao M do MVC
+                \item[i18n:] contém os arquivos properties utilizados na internacionalização
+                \item[services:] contém as classes de services, são beans do Spring
+                \item[taglib:] contém os arquivos de taglib customizadas para utilização nas views escritas com Groovy Server Pages (GSP)
+                \item[utils:] contém utilitários específicos do Grails
+                \item[views:] contém todos os arquivos GSP da aplicação, corresponde ao V do MVC
+            \end{description}
+        \item[lib:] Contém todos os arquivos .jar externos que são necessários a aplicação como por exemplos drivers JDBC 
+        \item[scripts:] Contém scripts customizados para utilização na aplicação
+        \item[src:] Contém diretórios groovy e java com código fonte que estarão disponíveis para aplicação em tempo de execução
+        \item[target:] Contém todos os arquivos binários da aplicação
+        \item[test:] Contém diretórios para testes de unidade e de integração
+   \end{description}
+    
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\textwidth]{images/appStructure.jpg}
+    \caption{Estrutura de pastas e arquivos criadas}
+    \label{fig:appStructure}
+    \end{figure}
+
+\subsubsection{Criando Domain Classes - Os Contatos da Aplicação}
 %iniciar uma subseção e falar sobre o grails
 %incluir:
 %   introdução ao grails -> DONE
-%   instalação
-%   convention-over-configuration
-%   domain classes
+%   instalação -> DONE
+%   descrição da aplicação (Google Contacts Clone) -> DONE
+%   script de criação da aplicação -> DONE
+%   convention-over-configuration -> DONE
+%   domain classes 
 %   controllers
 %   views
+%       GSP
 %   scaffolding
 %   GORM
 %   plugins
