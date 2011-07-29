@@ -520,7 +520,7 @@
 
 \subsection{Grails Framework}
 
-\subsubsectioin{Introdução}
+\subsubsection{Introdução}
 
     O Framework é focado no desenvolvimento rápido de aplicações web. Utiliza como
     base tecnologias consagradas como Spring, Hibernate, Sitemesh e Jetty. Se baseia 
@@ -533,7 +533,30 @@
     ou o Tomcat (\url{http://tomcat.apache.org/download-70.cgi}).
     
 \subsubsection{Instalação}
+    
+    O primeiro passo para a instalação do Grails é ter instalado o Java SDK, 
+    versão 5.0 ou superior, com a variável de ambiente JAVA\_HOME devidamente 
+    instalada apontando para o diretório de instalação do SDK. O próximo passo 
+    é efetuar o download da última versão do Grails, atualmente 1.3.7, e extrair
+    para um local apropriado. Após a extração do conteúdo em um diretório é necessário
+    criar a variável de ambiente GRAILS\_HOME apontando para o respectivo lugar.
+    Por último, deve-se adicionar ao PATH do sistema o caminho GRAILS\_HOME\textbackslash{}bin.
+    Com todos os passos anteriores executados resta abrir um terminal e executar 
+    o comando grails caso uma mensagem de ajuda seja exibida tudo está funcionando
+    corretamente. 
 
+    Alguns sistemas operacionais possuem pacotes de instalação prontos como o MAC
+    OS X e o Ubunto. Para usuários do MAC OS X com o homebrew instalado basta executar
+    no terminal o comando \emph{brew install grails} e tudo deve estar funcionando. Já 
+    para quem utiliza o Ubuntu é possível utilizar o comando apt-get a partir dos 
+    seguintes passos:
+    
+    \begin{enumerate}
+        \item sudo add-apt-repository ppa:groovy-dev/grails
+        \item sudo apt-get update
+        \item sudo apt-get install grails
+    \end{enumerate}
+    
 %iniciar uma subseção e falar sobre o grails
 %incluir:
 %   introdução ao grails -> DONE
