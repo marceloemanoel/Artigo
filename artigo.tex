@@ -417,7 +417,7 @@
     para tanto, se utiliza de métodos com assinaturas pré-definidas nas classes.
     Assim, é possível, por exemplo, fazer com que dois objetos do tipo BigDecimal
     possam ser adicionados utilizando o operador de adição +. A tabela 
-    \ref{tab:OperatorDefinition}, retirada do cartão de referência de \cite{rfcard} 
+    \ref{tab:OperatorDefinition}, retirada do cartão de referência de \cite{groovy:refcard} 
     exibe os métodos que precisam ser definidos para a utilização dos respectivos 
     operadores.
 
@@ -520,9 +520,23 @@
 
 \subsection{Grails Framework}
 
+\subsubsectioin{Introdução}
+
+    O Framework é focado no desenvolvimento rápido de aplicações web. Utiliza como
+    base tecnologias consagradas como Spring, Hibernate, Sitemesh e Jetty. Se baseia 
+    fortemente nos princípios de convenções sobre configurações, mapeamento objeto
+    relacional, plugins, scaffolding e testes unitários \cite{beginingGroovy:2008}.
+    Pelo fato de ter groovy como base existe ainda a integração em nível de bytecode,
+    além disso, uma aplicação Grails pode ser empacodata em um arquivo WAR, o que 
+    possibilita o deploy em qualquer servidor de aplicações JEE ou qualquer
+    container web como é o caso do Jetty (\url{http://jetty.codehaus.org/jetty/})
+    ou o Tomcat (\url{http://tomcat.apache.org/download-70.cgi}).
+    
+\subsubsection{Instalação}
+
 %iniciar uma subseção e falar sobre o grails
 %incluir:
-%   introdução ao grails
+%   introdução ao grails -> DONE
 %   instalação
 %   convention-over-configuration
 %   domain classes
@@ -581,7 +595,7 @@
 %
 %Bibliographic references must be unambiguous and uniform.  We recommend giving
 %the author names references in brackets, e.g. \cite{knuth:84},
-%\cite{boulic:91}, and \cite{smith:99} and \cite{beginingGroovy:2008}, \cite{groovy}, \cite{rfcard}.
+%\cite{boulic:91}, and \cite{smith:99} and \cite{beginingGroovy:2008}, \cite{groovy}, \cite{groovy:refcard}.
 %
 %The references must be listed using 12 point font size, with 6 points of space
 %before each reference. The first line of each reference should not be
