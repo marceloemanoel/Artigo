@@ -630,6 +630,64 @@
     \end{figure}
 
 \subsubsection{Criando Domain Classes - Os Contatos da Aplicação}
+
+    Segundo \cite{pragmaticGrails:2009} o coração do grails está nas Domain Classes.
+    As Domain Classes são classes que representam o domínio do negócio, seus 
+    relacionamentos e são persistentes tendo como convenção que uma Domain Class
+    está diretamente ligada a uma tabela em um banco de dados.
+    
+    Agora que já se sabe o que é uma Domain Class, é possível criar a primeira
+    classe do sistema de contatos. A classe Contact, que representa um contato.
+    Um contato no sistema possui os seguintes atributos:
+    
+    \begin{description}
+        \item[name:] Representa o nome do contato;
+        \item[email:] Representa o email do contato;
+    \end{description}
+    
+    Para a criar uma classe de domínio utiliza-se o comando: 
+
+    \begin{lstlisting}[language=]
+           grails create-app contacts <[pacote.]NomeDaClasse>
+    \end{lstlisting}
+    
+    onde:
+    
+    \begin{description}
+        \item[pacote:] é opcional e representa o nome do pacote que a classe 
+                      pertencerá, caso não informado, tem por valor padrão o nome
+                      da aplicação;
+        \item[NomeDaClasse:] é obrigatório e representa o nome da classe que será
+                             criada.
+    \end{description}
+    
+    Assim, para criar a classe Contact devemos executar o comando:
+    
+    \begin{lstlisting}[language=]
+           grails create-app contacts Contact
+    \end{lstlisting}
+    
+    Com isto o framework cria uma classe chamada Contact dentro do pacote contacts 
+    e um teste unitário chamado ContactTest também dentro do pacote contacts.
+    
+    O resultado final incluindo os atributos inseridos manualmente pode ser visto
+    nas listagens \ref{ContactV1} e \ref{ContactTestV1} a seguir.
+    
+    \lstinputlisting[
+                      style=Groovy,
+                      caption=Domain Class Contact com propriedades name e email,
+                      label=ContactV1
+                    ]
+                    {src/groovy/contacts/contact/ContactV1.groovy}
+
+   \lstinputlisting[
+                    style=Groovy,
+                    caption=Teste Unitário da classe Contact.groovy,
+                    label=ContactTestV1
+                    ]
+                    {src/groovy/contacts/contact/ContactTestsV1.groovy}
+
+    
 %iniciar uma subseção e falar sobre o grails
 %incluir:
 %   introdução ao grails -> DONE
