@@ -1,9 +1,8 @@
 package contacts
 
 import grails.test.*
-import junit.
 
-class ContactTests extends GrailsUnitTestCase {
+class ContactControllerTests extends ControllerUnitTestCase {
     protected void setUp() {
         super.setUp()
     }
@@ -12,8 +11,7 @@ class ContactTests extends GrailsUnitTestCase {
         super.tearDown()
     }
 
-	@Test
-    void something() {
-		assertTrue true
+    void testSomething() {
+
     }
 }

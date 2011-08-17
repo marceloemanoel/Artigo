@@ -670,7 +670,7 @@
     Com isto o framework cria uma classe chamada Contact dentro do pacote contacts 
     e um teste unitário chamado ContactTest também dentro do pacote contacts.
     
-    O resultado final incluindo os atributos inseridos manualmente pode ser visto
+    O resultado final incluindo as propriedades inseridas manualmente pode ser visto
     nas listagens \ref{ContactV1} e \ref{ContactTestV1} a seguir.
     
     \lstinputlisting[
@@ -681,13 +681,86 @@
                     {src/groovy/contacts/contact/ContactV1.groovy}
 
    \lstinputlisting[
-                    style=Groovy,
-                    caption=Teste Unitário da classe Contact.groovy,
-                    label=ContactTestV1
+                      style=Groovy,
+                      caption=Teste Unitário da classe Contact.groovy,
+                      label=ContactTestV1
                     ]
                     {src/groovy/contacts/contact/ContactTestsV1.groovy}
 
+    Além das propriedades que foram inseridas, o framework insere automaticamente
+    na domain class duas propriedades id e version e vários métodos. É possível
+    por exemplo, com o pouco código existente, salvar, atualizar, ler e excluir do
+    banco de dados. Tudo isso é possível pela natureza do Groovy, os métodos são 
+    dinâmicamente criados e injetados na classe.
     
+    
+\subsubsection{Testando as Domain Classes}
+
+    Para que possamos
+    
+\subsubsection{Acessando a aplicação}
+
+    Até o presente momento foram criados uma Domain Class e seus respectivos testes.
+    Para adicionar alguma lógica ao projeto, é preciso criar um \emph{Controller}.
+    Os controllers são responsáveis pela ligação entre as Domain Classes e as Views.
+    Assim como para todos os recursos necessários criados até agora existe um comando
+    para a facilitar a automatização, para criar um controller é necessário utilizar
+    o seguinte comando:
+    
+    \begin{lstlisting}[language=]
+          grails create-controller Contact
+    \end{lstlisting}
+    
+    A execução do comando resultará na criação da classe ContactController dentro
+    da pasta de controllers (grails-app/controllers), o seu conteúdo é exibido na
+    listagem \ref{ContactControllerV1}.
+    
+    \lstinputlisting[
+                     style=Groovy,
+                     caption=ContactController gerado pelo comando create-controller,
+                     label=ContactControllerV1
+                   ]
+                   {src/groovy/contacts/contact/ContactControllerV1.groovy}
+                   
+    O controller criado possui apenas um método chamado index. Os métodos em um 
+    controller são chamados de actions. Até o presente momento, este controller
+    não executa nenhuma ação. Entretanto é possível, com poucas modificações, criar
+    funcionalidades básicas de um CRUD (Create, Retrieve, Update e Delete) sobre 
+    a Domain Class Contact. A listagem \ref{ContactControllerV2} demostra uma outra
+    funcionalidade de dynamic scaffolding do framework. 
+    
+    \lstinputlisting[
+                     style=Groovy,
+                     caption=ContactController com scaffolding,
+                     label=ContactControllerV2
+                   ]
+                   {src/groovy/contacts/contact/ContactControllerV2.groovy}
+
+    
+    Ao executar a aplicação o resultado é o que pode ser visto na imagem \ref{fig:contactScaffold1}.
+
+    \begin{figure}[h!]
+       \centering
+       \includegraphics[width=1\textwidth]{images/contactControllerScaffold.png}
+       \caption{Scaffold}
+       \label{fig:contactScaffold1}
+   \end{figure}
+   
+   Ao clicar em contacts.ContactController a aplicação redireciona o usuário para
+   a página gerada pelo scaffold, como pode-se ver na figura \ref{fig:contactScaffold2}.
+   
+   \begin{figure}[h!]
+      \centering
+      \includegraphics[width=.4\textwidth]{images/contactControllerScaffold2.png}
+      \caption{Estrutura de pastas e arquivos criadas}
+      \label{fig:contactScaffold2}
+  \end{figure}
+  
+  Nessa página é possível disparar a criação de novos Contacts e ver uma listagem
+  dos Contacts existentes. Como nesse momento não existe nenhum cadastrado a listagem
+  não apresenta nenhum valor.
+  
+  
 %iniciar uma subseção e falar sobre o grails
 %incluir:
 %   introdução ao grails -> DONE
@@ -697,9 +770,9 @@
 %   convention-over-configuration -> DONE
 %   domain classes 
 %   controllers
+%   scaffolding
 %   views
 %       GSP
-%   scaffolding
 %   GORM
 %   plugins
 %\section{Figures and Captions}\label{sec:figs}

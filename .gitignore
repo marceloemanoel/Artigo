@@ -6,3 +6,5 @@ artigo.bbl
 artigo.blg
 artigo.lol
 artigo.synctex.gz
+target/
+*.war
