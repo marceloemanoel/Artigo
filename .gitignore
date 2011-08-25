@@ -7,4 +7,5 @@ artigo.blg
 artigo.lol
 artigo.synctex.gz
 target/
+*.class
 *.war
