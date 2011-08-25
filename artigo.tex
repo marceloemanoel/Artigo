@@ -648,7 +648,7 @@
     Para a criar uma classe de domínio utiliza-se o comando: 
 
     \begin{lstlisting}[language=]
-           grails create-app contacts <[pacote.]NomeDaClasse>
+       grails create-domain-class <[pacote.]NomeDaClasse>
     \end{lstlisting}
     
     onde:
@@ -664,7 +664,7 @@
     Assim, para criar a classe Contact devemos executar o comando:
     
     \begin{lstlisting}[language=]
-           grails create-app contacts Contact
+        grails create-domain-class contacts.Contact
     \end{lstlisting}
     
     Com isto o framework cria uma classe chamada Contact dentro do pacote contacts 
@@ -758,8 +758,33 @@
   
   Nessa página é possível disparar a criação de novos Contacts e ver uma listagem
   dos Contacts existentes. Como nesse momento não existe nenhum cadastrado a listagem
-  não apresenta nenhum valor.
+  não apresenta nenhum valor. A figura \ref{fig:createContactScaffold} mostra a 
+  página gerada dinamicamente pelo scaffold que permite a criação de novos Contacts.
   
+   \begin{figure}[h!]
+      \centering
+      \includegraphics[width=.4\textwidth]{images/createContactScaffold.png}
+      \caption{Página de criação de novos Contacts gerada dinamicamente pelo scaffold}
+      \label{fig:createContactScaffold}
+  \end{figure}
+  
+  Após a criação do registro é exibida a página de exibição de Contact como pode 
+  ser observado na figura \ref{fig:showContactScaffold} e na página de listagem
+  agora o registro recém criado já pode ser visto, como na figura \ref{fig:listContacScaffold}.
+
+   \begin{figure}[h!]
+      \centering
+      \includegraphics[width=.4\textwidth]{images/showContactScaffold.png}
+      \caption{Página de exibição de um Contact gerada dinamicamente pelo scaffold}
+      \label{fig:showContactScaffold}
+  \end{figure}
+  
+   \begin{figure}[h!]
+      \centering
+      \includegraphics[width=.4\textwidth]{images/listContactScaffold.png}
+      \caption{Página de exibição dos Contacts cadastrados gerada dinamicamente pelo scaffold}
+      \label{fig:listContactScaffold}
+  \end{figure}
   
 %iniciar uma subseção e falar sobre o grails
 %incluir:
