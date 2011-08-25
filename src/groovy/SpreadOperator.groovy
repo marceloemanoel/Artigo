@@ -15,10 +15,10 @@ def list = [chris,joseph,jim]
 
 println "Using collect closure:"
 list.collect { it.printFullName() } //Chris Judd
-                                    //Joseph Nusairat
-                                    //Jim Shingler
+                                        //Joseph Nusairat
+                                        //Jim Shingler
 
 println "\n\nUsing Spread Operator:"
 list*.printFullName()   //Chris Judd
-                        //Joseph Nusairat
-                        //Jim Shingler
+                          //Joseph Nusairat
+                          //Jim Shingler

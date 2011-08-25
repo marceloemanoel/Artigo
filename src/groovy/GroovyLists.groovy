@@ -15,11 +15,11 @@ println listaComElementos.size // 6
 
 // Iterar sobre a lista
 listaComElementos.each {println it} // 1
-                                    // 2
-                                    // 3
-                                    // 4
-                                    // 5
-                                    // 6
+                                           // 2
+                                           // 3
+                                           // 4
+                                           // 5
+                                           // 6
 // Utilizacao atraves de indices
 println listaComElementos[1] // 2
 println listaComElementos.get(1) // 2
