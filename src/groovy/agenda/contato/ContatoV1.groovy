@@ -1,8 +1,8 @@
-package contacts
+package agenda
 
-class Contact {
+class Contato {
     
-    String name;
+    String nome;
     String email;
     
     static constraints = {

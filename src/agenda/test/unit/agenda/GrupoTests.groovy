@@ -1,8 +1,8 @@
-package contacts
+package agenda
 
 import grails.test.*
 
-class ContactTests extends GrailsUnitTestCase {
+class GrupoTests extends GrailsUnitTestCase {
     protected void setUp() {
         super.setUp()
     }

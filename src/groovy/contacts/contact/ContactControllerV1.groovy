@@ -1,3 +1,0 @@
-class ContactController { 
-    def index = { }
-}

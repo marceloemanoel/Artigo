@@ -534,24 +534,27 @@
     
 \subsubsection{Instalação}
     
-    %   PRECISA DE REFACTORING!
-    De acordo com \cite{grails} os passos para a instalação do Grails são os seguintes.
-    O primeiro passo para a instalação do Grails é ter instalado o Java SDK, 
-    versão 5.0 ou superior, com a variável de ambiente JAVA\_HOME devidamente 
-    instalada apontando para o diretório de instalação do SDK. O próximo passo 
-    é efetuar o download da última versão do Grails, atualmente 1.3.7, e extrair
-    para um local apropriado. Após a extração do conteúdo em um diretório é necessário
-    criar a variável de ambiente GRAILS\_HOME apontando para o respectivo lugar.
-    Por último, deve-se adicionar ao PATH do sistema o caminho GRAILS\_HOME\textbackslash{}bin.
-    Com todos os passos anteriores executados resta abrir um terminal e executar 
-    o comando grails caso uma mensagem de ajuda seja exibida tudo está funcionando
-    corretamente. 
+    O framework assim como o Groovy tem como requisito o Java SDK versão 5.0 ou 
+    superior com a variável de ambiente JAVA\_HOME devidamente instalada e apontando
+    para o diretório de instalação do SDK. 
+    
+    De acordo com \cite{grails} os passos para a instalação do Grails são os seguintes:
+    \begin{enumerate}
+        \item Efetuar o download da última versão do Grails, atualmente 1.3.7, e extrair
+              para um local apropriado.
+        \item Criar uma variável de ambiente chamada GRAILS\_HOME apontando para
+              o diretório escolhido no passo anterior.
+        \item Adicionar ao PATH do sistema o caminho GRAILS\_HOME\textbackslash{}bin.
+    \end{enumerate}
+
+    Com todos os passos executados resta abrir um terminal e executar o comando 
+    \emph{grails}. Caso uma mensagem de ajuda seja exibida tudo está funcionando corretamente. 
 
     Alguns sistemas operacionais possuem pacotes de instalação prontos como o MAC
-    OS X e o Ubunto. Para usuários do MAC OS X com o homebrew instalado basta executar
-    no terminal o comando \emph{brew install grails} e tudo deve estar funcionando. Já 
-    para quem utiliza o Ubuntu é possível utilizar o comando apt-get a partir dos 
-    seguintes passos:
+    OS X e o Ubuntu. Para usuários do MAC OS X com o homebrew instalado basta executar
+    no terminal o comando \emph{brew install grails} e, ao término, tudo deve 
+    estar funcionando. Já para quem utiliza o Ubuntu é possível utilizar o comando 
+    apt-get a partir dos seguintes passos:
     
     \begin{enumerate}
         \item sudo add-apt-repository ppa:groovy-dev/grails
@@ -565,24 +568,24 @@
     que vai explorar de uma maneira mais dinâmica as principais funcionalidades
     oferecidas.
     
-    A aplicação é um clone do Google Contacts. Uma Agenda de contatos onde cada 
+    A aplicação é um clone do Google Contacts. Uma \textbf{Agenda} de contatos onde cada 
     \textbf{contato} pode pertecer a um ou mais \textbf{grupos}. Cada \textbf{contato}
-    possui foto, endereços de email e físico, telefone(s), url de site, endereço 
-    de perfil no google e etc. Na aplicação é possível \emph{listar todos} os 
-    \textbf{contatos}, \emph{listar} os \textbf{contatos} agrupados, 
-    \emph{adicionar} \textbf{grupos}, \emph{associar} \textbf{contatos} a um \textbf{grupo},
-    \emph{exibir}, \emph{editar}, \emph{salvar} e \emph{apagar} \textbf{contatos} e etc.
+    pode possuir foto, endereços de email e físico, telefone(s), url de site, endereço 
+    de perfil no google e etc. Na aplicação é possível \emph{listar todos os 
+    \textbf{contatos}}, \emph{listar os \textbf{contatos} agrupados}, 
+    \emph{adicionar \textbf{grupos}}, \emph{associar \textbf{contatos} a um \textbf{grupo}}
+    e \emph{exibir}, \emph{editar}, \emph{salvar} e \emph{apagar} \textbf{contatos e grupos}.
     
     A primeira atividade necessária é criar a aplicação, para isso é necessário
     digitar no console/terminal o seguinte comando:
     
     \begin{lstlisting}[language=]
-        grails create-app contacts
+        grails create-app agenda
     \end{lstlisting}
     
     Isso irá acionar o grails e ele irá criar toda a estrutura inicial necessária para
     o funcionamento do projeto. A partir deste momento a aplicação já pode ser 
-    executada, para tanto entre no diretório criado e digite o comando:
+    executada. Para tanto entre no diretório criado e digite o comando:
     
     \begin{lstlisting}[language=]
         grails run-app
@@ -590,13 +593,13 @@
     
     Imediatamente uma instância do container web jetty será criada e estará a
     espera de conexões na porta 8080 por padrão. Para testar se a aplicação está
-    sendo executada é possível acessar o endereço \url{http://localhost:8080/contacts} 
+    sendo executada é possível acessar o endereço \url{http://localhost:8080/agenda} 
     e o resultado deve ser semelhante ao da imagem \ref{fig:firstRun}
     
     \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{images/firstRun.jpg}
-    \caption{Primeira execução da aplicação Contacts}
+    \caption{Primeira execução da aplicação Agenda}
     \label{fig:firstRun}
     \end{figure}
     
@@ -632,16 +635,16 @@
 \subsubsection{Criando Domain Classes - Os Contatos da Aplicação}
 
     Segundo \cite{pragmaticGrails:2009} o coração do grails está nas Domain Classes.
-    As Domain Classes são classes que representam o domínio do negócio, seus 
-    relacionamentos e são persistentes tendo como convenção que uma Domain Class
-    está diretamente ligada a uma tabela em um banco de dados.
+    Elas são classes que representam o domínio do negócio, seus relacionamentos e
+    são persistentes. Existe a convenção que uma Domain Class está diretamente 
+    ligada a uma tabela em um banco de dados.
     
     Agora que já se sabe o que é uma Domain Class, é possível criar a primeira
-    classe do sistema de contatos. A classe Contact, que representa um contato.
+    classe do sistema de contatos. A classe Contato, que representa um contato.
     Um contato no sistema possui os seguintes atributos:
     
     \begin{description}
-        \item[name:] Representa o nome do contato;
+        \item[nome:] Representa o nome do contato;
         \item[email:] Representa o email do contato;
     \end{description}
     
@@ -661,14 +664,14 @@
                              criada.
     \end{description}
     
-    Assim, para criar a classe Contact devemos executar o comando:
+    Assim, para criar a classe Contato devemos executar o comando:
     
     \begin{lstlisting}[language=]
-        grails create-domain-class contacts.Contact
+        grails create-domain-class agenda.Contato
     \end{lstlisting}
     
-    Com isto o framework cria uma classe chamada Contact dentro do pacote contacts 
-    e um teste unitário chamado ContactTest também dentro do pacote contacts.
+    Com isto o framework cria uma classe chamada Contato dentro do pacote agenda 
+    e um teste unitário chamado ContatoTest também dentro do pacote agenda.
     
     O resultado final incluindo as propriedades inseridas manualmente pode ser visto
     nas listagens \ref{ContactV1} e \ref{ContactTestV1} a seguir.
@@ -678,29 +681,24 @@
                       caption=Domain Class Contact com propriedades name e email,
                       label=ContactV1
                     ]
-                    {src/groovy/contacts/contact/ContactV1.groovy}
+                    {src/groovy/agenda/contato/ContatoV1.groovy}
 
    \lstinputlisting[
                       style=Groovy,
-                      caption=Teste Unitário da classe Contact.groovy,
+                      caption=Teste Unitário da classe Contato.groovy,
                       label=ContactTestV1
                     ]
-                    {src/groovy/contacts/contact/ContactTestsV1.groovy}
+                    {src/groovy/agenda/contato/ContatoTestsV1.groovy}
 
     Além das propriedades que foram inseridas, o framework insere automaticamente
-    na domain class duas propriedades id e version e vários métodos. É possível
-    por exemplo, com o pouco código existente, salvar, atualizar, ler e excluir do
-    banco de dados. Tudo isso é possível pela natureza do Groovy, os métodos são 
-    dinâmicamente criados e injetados na classe.
-    
-    
-\subsubsection{Testando as Domain Classes}
+    na domain class duas propriedades: \textbf{id} e \textbf{version} e vários métodos.
+    É possível por exemplo, com o pouco código existente, salvar, atualizar, ler
+    e excluir do banco de dados. Tudo isso é possível pela natureza do Groovy, 
+    os métodos são dinâmicamente criados e injetados na classe.
 
-    Para que possamos
-    
 \subsubsection{Acessando a aplicação}
 
-    Até o presente momento foram criados uma Domain Class e seus respectivos testes.
+    Até o presente momento foi criada uma Domain Class e seus respectivos testes.
     Para adicionar alguma lógica ao projeto, é preciso criar um \emph{Controller}.
     Os controllers são responsáveis pela ligação entre as Domain Classes e as Views.
     Assim como para todos os recursos necessários criados até agora existe um comando
@@ -708,33 +706,33 @@
     o seguinte comando:
     
     \begin{lstlisting}[language=]
-          grails create-controller Contact
+          grails create-controller Contato
     \end{lstlisting}
     
-    A execução do comando resultará na criação da classe ContactController dentro
+    A execução do comando resultará na criação da classe ContatoController dentro
     da pasta de controllers (grails-app/controllers), o seu conteúdo é exibido na
     listagem \ref{ContactControllerV1}.
     
     \lstinputlisting[
                      style=Groovy,
-                     caption=ContactController gerado pelo comando create-controller,
+                     caption=ContatoController gerado pelo comando create-controller,
                      label=ContactControllerV1
                    ]
-                   {src/groovy/contacts/contact/ContactControllerV1.groovy}
+                   {src/groovy/agenda/contato/ContatoControllerV1.groovy}
                    
     O controller criado possui apenas um método chamado index. Os métodos em um 
     controller são chamados de actions. Até o presente momento, este controller
     não executa nenhuma ação. Entretanto é possível, com poucas modificações, criar
     funcionalidades básicas de um CRUD (Create, Retrieve, Update e Delete) sobre 
-    a Domain Class Contact. A listagem \ref{ContactControllerV2} demostra uma outra
-    funcionalidade de dynamic scaffolding do framework. 
+    a Domain Class Contato. A listagem \ref{ContactControllerV2} demostra uma outra
+    funcionalidade do framework, \emph{dynamic scaffolding}. 
     
     \lstinputlisting[
                      style=Groovy,
-                     caption=ContactController com scaffolding,
+                     caption=ContatoController com scaffolding,
                      label=ContactControllerV2
                    ]
-                   {src/groovy/contacts/contact/ContactControllerV2.groovy}
+                   {src/groovy/agenda/contato/ContatoControllerV2.groovy}
 
     
     Ao executar a aplicação o resultado é o que pode ser visto na imagem \ref{fig:contactScaffold1}.
@@ -746,13 +744,13 @@
        \label{fig:contactScaffold1}
    \end{figure}
    
-   Ao clicar em contacts.ContactController a aplicação redireciona o usuário para
+   Ao clicar em agenda.ContatoController a aplicação redireciona o usuário para
    a página gerada pelo scaffold, como pode-se ver na figura \ref{fig:contactScaffold2}.
    
    \begin{figure}[h!]
       \centering
       \includegraphics[width=.4\textwidth]{images/contactControllerScaffold2.png}
-      \caption{Estrutura de pastas e arquivos criadas}
+      \caption{}
       \label{fig:contactScaffold2}
   \end{figure}
   
