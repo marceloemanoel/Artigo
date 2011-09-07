@@ -3,6 +3,7 @@ package agenda
 import grails.test.*
 
 class ContatoTests extends GrailsUnitTestCase {
+
     protected void setUp() {
         super.setUp()
     }
