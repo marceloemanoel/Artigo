@@ -8,9 +8,4 @@ class PropriedadeContato {
     static constraints = {
         nome(nullable: false, blank: false)
     }
-
-    String toString(){
-        "${nome}: ${valor}"
-    }
-
 }

@@ -2,8 +2,16 @@ package agenda
 
 class NumeroCelular extends PropriedadeContato{
     
-    public NumeroCelular(){
-        this.nome = "celular"
+	public NumeroCelular(){
+		this.nome = getName();
+	}
+
+    public String getNome(){
+        "celular"
+    }
+    
+    public String setNome(String nome){
+        //Devemos ignorar qualquer alteração.
     }
     
     static constraints = {

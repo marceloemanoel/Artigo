@@ -591,7 +591,7 @@
         grails run-app
     \end{lstlisting}
     
-    Imediatamente uma instância do container web jetty será criada e estará a
+    Imediatamente uma instância do container web tomcat será criada e estará a
     espera de conexões na porta 8080 por padrão. Para testar se a aplicação está
     sendo executada é possível acessar o endereço \url{http://localhost:8080/agenda} 
     e o resultado deve ser semelhante ao da imagem \ref{fig:firstRun}
@@ -784,6 +784,124 @@
       \label{fig:listContactScaffold}
   \end{figure}
   
+\subsubsection{Complementando o modelo da aplicação}
+
+  Para complementar as funcionalidades necessárias da aplicação será necessário 
+  criar novas domain classes e gerar os respectivos controllers. Assim, vamos criar 
+  as Domain Classes Grupo e PropriedadeContato. A Domain Class Grupo representa o
+  que o nome já deixa claro. Enquanto à Domain Class PropriedadeContato representa
+  o conceito de propriedades dinâmicas para o nosso Contato. Assim, é possível
+  criar diversos tipos de propriedades para cada contato, e além disso, é possível
+  que contatos distintos tenham propriedades distintas além do nome e email. A 
+  listagem \ref{GrupoV1} mostra a Domain Class Grupo e a listagem \ref{GrupoControllerV1}
+  o seu respectivo Controller. 
+  
+  
+  \lstinputlisting[
+                    style=Groovy,
+                    caption=Domain Class Grupo com propriedades name,
+                    label=GrupoV1
+                  ]
+                  {src/groovy/agenda/grupo/GrupoV1.groovy}
+ 
+  \lstinputlisting[
+                    style=Groovy,
+                    caption=Controller de Grupos,
+                    label=GrupoControllerV1
+                  ]
+                  {src/groovy/agenda/grupo/GrupoControllerV1.groovy}
+ 
+  A listagem \ref{GrupoV1} exibe uma novidade em uma Domain Class, requisitos de 
+  validação estão inseridos na classe através da closure estatica \textbf{constraints}.
+  Nela estão definidas duas validações para a propriedade \textbf{nome}. A primeira
+  validação diz que nome não pode ser vazio. A segunda diz que nome não pode ser
+  nulo. Estas restrições serão analisadas sempre que o método \emph{validate()} 
+  for invocado. Isto ocorre, por exemplo, sempre que o método \emph{save} for 
+  invocado. A figura \ref{fig:ValidacaoGrupo} mostra o resultado da validação da 
+  tentativa de criação de um grupo sem nome.
+  
+  \begin{figure}[h!]
+       \centering
+       \includegraphics[width=.4\textwidth]{images/validacaoGrupo.png}
+       \caption{Tentativa de criação de um grupo sem nome}
+       \label{fig:ValidacaoGrupo}
+   \end{figure} 
+  
+  Segundo \cite{pragmaticGrails:2009} existem as seguintes validações nativas no
+  framework:
+  
+  \begin{description}
+      \item[blank:(true|false)] Permite que um valor seja uma string vazia
+      \item[nullable:(true|false)] Permite valores nulos
+      \item[max:] Valor máximo
+      \item[min:] Valor mínimo
+      \item[size:] Recebe um objeto do tipo Range para determinar os extremos
+      \item[maxSize:] O tamanho máximo de uma String ou Collection
+      \item[minSize:] O tamanho mínimo de uma String ou Collection
+      \item[inList:] Lista de valores válidos
+      \item[matches:] O valor deve ser reconhecido por uma expressão regular
+      \item[unique:(true|false)] Reforça a unicidade do valor no Banco de Dados
+      \item[url:(true|false)] O valor deve ser uma URL válida
+      \item[email:(true|false)] O valor deve ser um email válido
+      \item[creditCard:(true|false)] O valor deve ser um número válido de cartão
+                                     de crédito
+      \item[validator:] Recebe uma closure com dois parâmetros, o primeiro sendo 
+                        o valor e o segundo (opcional) a instância sendo validada
+  \end{description}
+  
+  Além de efetuar validação a closure constraint serve para orientar o scaffolding.
+  Customizações básicas podem ser criadas apenas alterando essa closure. As listagens
+  \ref{PropriedadeContatoV1} e \ref{ContatoV2} exibem respectivamente as classes
+  PropriedadeContato e a classe Contato atualizada com as validações.
+  
+  \lstinputlisting[
+                      style=Groovy,
+                      caption=Domain Class PropriedadeContato,
+                      label=PropriedadeContatoV1
+                    ]
+                    {src/groovy/agenda/propriedades/PropriedadeContatoV1.groovy}
+                    
+  \lstinputlisting[
+                    style=Groovy,
+                    caption=Domain Class Contato atualizada com validações,
+                    label=ContatoV2
+                  ]
+                  {src/groovy/agenda/contato/ContatoV2.groovy}
+    
+\subsubsection{Relacionamentos entre classes}
+    
+    Seguindo o fluxo de desenvolvimento da aplicação iremos agora tratar dos relacionamentos
+    entre as classes criadas até o momento. Para a agenda, é claro que 1 Grupo
+    possui várias referências à Contatos e que cada Contato pode ter várias propriedades
+    além de nome e email. Para criar relacionamentos entre as classes o framework 
+    apresenta o GORM. Uma abstração acima do Hibernate e que pode ser facilmente
+    configurado.
+    
+    Propriedades Simples podem ser configuradas apenas utilizando o mecanismo de
+    validação em conjunto com a definição do tipo. Esta é a razão pela qual as 
+    propriedades das Domain Classes criadas até o momento utilizam tipos em vez 
+    da palavra chave \textbf{def}, o que seria perfeitamente possível.
+    
+    Relacionamentos \textbf{1 para muitos} como no caso entre Grupo e Contato são
+    configurados utilizando uma propriedade estática chamada hasMany. As chaves
+    do mapa representam o nome das propriedades na classe que detém o relacionamento
+    e os valores são os tipos dos objetos do relacionamento. A listagem \ref{GrupoV2}
+    mostra o relacionamento entre um Grupo e seus diversos Contatos.
+    
+    \lstinputlisting[
+                      style=Groovy,
+                      caption=Relacionamento entre Grupo e os seus Contatos
+                      label=GrupoV2
+                    ]
+                    {src/groovy/agenda/grupo/GrupoV2.groovy}
+    
+    A closure hasMany recebe um mapa contendo o nome das propriedades e seus respectivos
+    tipos. A leitura fluída permite quase que uma tradução direta de que um Grupo
+    possui muitos Contatos.
+    
+    
+    
+
 %iniciar uma subseção e falar sobre o grails
 %incluir:
 %   introdução ao grails -> DONE
@@ -794,6 +912,7 @@
 %   domain classes -> DONE
 %   controllers -> DONE
 %   scaffolding -> DONE
+%   validação -> DONE
 %   GORM
 %   views
 %       GSP
