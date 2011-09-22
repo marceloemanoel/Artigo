@@ -3,15 +3,7 @@ package agenda
 class GrupoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-    
-    def associarContato = {
-        def contato = Contato.get(params.contato.id)
-        def grupo = Grupo.get(params.grupo.id)
-        
-        grupo.addToContatos(contato)
-        grupo.save()
-    }
-    
+
     def index = {
         redirect(action: "list", params: params)
     }

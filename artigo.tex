@@ -568,7 +568,12 @@
     A fim de entender o funcionamento do framework será criada uma aplicação web
     que vai explorar de uma maneira mais dinâmica as principais funcionalidades
     oferecidas.
-    
+%    listar todos os contatos -> DONE
+%    listar os contatos agrupados -> 
+%    adicionar grupos -> DONE
+%    associar contatos a um grupo -> 
+%    exibir, editar, salvar e apagar contatos e grupos -> DONE
+
     A aplicação é um clone do Google Contacts. Uma \textbf{Agenda} de contatos onde cada 
     \textbf{contato} pode pertecer a um ou mais \textbf{grupos}. Cada \textbf{contato}
     pode possuir foto, endereços de email e físico, telefone(s), url de site, endereço 
@@ -878,10 +883,11 @@
     apresenta o GORM. Uma abstração acima do Hibernate e que pode ser facilmente
     configurado.
     
-    Propriedades Simples podem ser configuradas apenas utilizando o mecanismo de
-    validação em conjunto com a definição do tipo. Esta é a razão pela qual as 
-    propriedades das Domain Classes criadas até o momento utilizam tipos em vez 
-    da palavra chave \textbf{def}, o que seria perfeitamente possível.
+    Propriedades Simples e relacionamentos \textbf{1 para 1} podem ser configurados
+    apenas utilizando o mecanismo de validação em conjunto com a definição do tipo.
+    Esta é a razão pela qual as propriedades das Domain Classes criadas até o momento
+    utilizam tipos em vez da palavra chave \textbf{def}, o que seria perfeitamente
+    possível.
     
     Relacionamentos \textbf{1 para muitos} como no caso entre Grupo e Contato são
     configurados utilizando uma propriedade estática chamada hasMany. As chaves
@@ -891,18 +897,67 @@
     
     \lstinputlisting[
                       style=Groovy,
-                      caption=Relacionamento entre Grupo e os seus Contatos
+                      caption=Relacionamento entre Grupo e os seus Contatos,
                       label=GrupoV2
                     ]
                     {src/groovy/agenda/grupo/GrupoV2.groovy}
     
     A closure hasMany recebe um mapa contendo o nome das propriedades e seus respectivos
     tipos. A leitura fluída permite quase que uma tradução direta de que um Grupo
-    possui muitos Contatos.
+    possui muitos Contatos. O mesmo se aplica para as propriedades dos contatos, 
+    como pode ser visto na listagem \ref{ContatoV3}.
     
+    \lstinputlisting[
+                      style=Groovy,
+                      caption=Relacionamento entre Contato e as suas Propriedades,
+                      label=ContatoV3
+                    ]
+                    {src/groovy/agenda/contato/ContatoV3.groovy}
     
+    Para relacionamentos \textbf{muitos-para-muitos} usa-se a close hasMany e a 
+    propriedade \emph{belongsTo} que representa o lado que detém a posse do relacionamento.
     
 
+\subsubsection{Materializando Controllers e Views}
+    
+    Até o presente momento, todo o código escrito se encontra nas domain classes.
+    Os controllers utilizam scaffolding e não existe código de view. Para implementar
+    as funcionalidades restantes do projeto se faz necessário alterar o código dos
+    controllers. Para isso, o seguinte comando deve ser executado:
+    
+    \begin{lstlisting}[language=]
+           grails generate-all "*"
+    \end{lstlisting}
+    
+    Isso irá fazer com que o código dinamicamente gerado do scaffold seja "materializado"
+    nos controllers permitindo assim, que seja modificado. O resultado final pode
+    ser visto na listagem \ref{ContatoControllerV3}.
+    
+    \lstinputlisting[
+                     style=Groovy,
+                     caption=ContatoContoller gerado,
+                     label=ContatoControllerV3
+                   ]
+                   {src/groovy/agenda/contato/ContatoControllerV3.groovy}
+    
+    De maneira semelhante o controller de grupos possui os mesmos métodos. Em um
+    controller os métodos públicos são chamados de actions. Cada action possui uma
+    view associada. A listagem \ref{ContatoCreateView} exibe a view associada à
+    action create.
+    
+    \lstinputlisting[
+                     style=java,
+                     caption=View da action create,
+                     label=ContatoCreateView
+                   ]
+                   {src/groovy/agenda/contato/createV1.gsp}
+    
+\subsubsection{Associando Contatos a Grupos}
+
+    Para associar um \textbf{contato} a um \textbf{grupo} deve-se alterar o controller
+    GrupoController criando uma action responsável para a tarefa.
+    
+    
 %iniciar uma subseção e falar sobre o grails
 %incluir:
 %   introdução ao grails -> DONE
@@ -915,6 +970,12 @@
 %   scaffolding -> DONE
 %   validação -> DONE
 %   GORM
+%       - Relacionamentos:
+%           1-para-1 -> DONE
+%           1-para-muitos -> DONE
+%           muitos-para-muitos -> DONE
+%       - Finders
+%           
 %   views
 %       GSP
 %   plugins
