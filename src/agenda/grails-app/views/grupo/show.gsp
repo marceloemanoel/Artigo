@@ -32,8 +32,8 @@
               <td valign="top" class="name"><g:message code="grupo.contatos.label" default="Contatos" /></td>
               <td valign="top" style="text-align: left;" class="value">
                 <ul>
-                  <g:each in="${grupoInstance.contatos}" var="c">
-                    <li><g:link controller="contato" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+                  <g:each in="${grupoInstance.contatos}" var="contato">
+                    <li><g:link controller="contato" action="show" id="${contato.id}">${contato?.encodeAsHTML()}</g:link></li>
                   </g:each>
                 </ul>
               </td>
