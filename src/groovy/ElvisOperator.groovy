@@ -1,5 +1,5 @@
-// Java ternary using Groovy properties
+//-Operador ternário de Java utilizando Groovy Properties+
 def clientName = client.name == null ? "default" : client.name 
 
-//Elvis operator version
+//-Versão do código acima, utilizando o operador elvis+
 def clientName2 = client.name ?: "default"

@@ -9,6 +9,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{fontenc}
 
+\renewcommand\lstlistingname{Listagem}
+\renewcommand\lstlistlistingname{Lista de Listagens}
+\renewcommand\figurename{Imagem}
+\renewcommand\listfigurename{Lista de Imagens}
+\renewcommand\tablename{Tabela}
+\renewcommand\listtablename{Lista de Tabelas}
+
 % Definição do template de formatação e synthax hightlight para groovy :)
 %
 \lstdefinelanguage{Groovy}{keywords={
@@ -81,7 +88,7 @@
                         name=Listagem,
                         frame=leftline                   
                      }
-
+\hyphenation{chave/valor}
 \sloppy
 
 \title{Groovy on Rails, uma alternativa para o desenvolvimento de aplicações web
@@ -104,28 +111,28 @@
     para o desenvolvimento de aplicações web. Diversos frameworks surgiram para 
     proporcionar reutilização de código e aumento de produtividade. A plataforma
     possui implementações robustas e amplamente utilizadas. Porém, apesar dos 
-    esforços, outras tecnologias mais recentes vem se destacando e tomando a 
+    esforços, outras tecnologias mais recentes vêm se destacando e tomando a 
     frente no cenário de desenvolvimento de aplicações para a web. Dentre estas 
     tecnologias são notórias algumas características como o uso de linguagens 
     dinâmicas em conjunto com padrões de projeto amplamente conhecidos. Neste 
-    artigo será abordado o framework Groovy on Rails, ou simplesmente, Grails. 
-    O framework alia a linguagem dinâmica groovy
-    à arquitetura utilizada no Ruby on Rails. \nocite{*}
+    artigo será abordado o framework Groovy on Rails, ou simplesmente Grails. 
+    O framework alia a linguagem dinâmica Groovy à arquitetura utilizada no Ruby 
+    on Rails. \nocite{*}
     
 \end{resumo}
 
 \section{Introdução}
 
     Alta competitividade, baixo custo de produção e manutenção, além de alta 
-    qualidade são exigências do mercado de desenvolvimento de software. 
+    qualidade, são exigências do mercado de desenvolvimento de software. 
     Independentemente da tecnologia envolvida no processo de construção de uma 
     aplicação web, existe o componente de complexidade inerente ao próprio 
     ambiente. Toda a comunicação é baseada no protocolo HTTP. Sua simplicidade 
-    garante a alta disponibilidade da Web, porém requer um trabalho adicional 
+    garante a alta disponibilidade da web, porém requer um trabalho adicional 
     das aplicações para manter as informações seguras e íntegras.
 
-    No cenário previamente descrito, a Plataforma Java se destacou desde o seu 
-    surgimento. A fim de facilitar o desenvolvimento das aplicações para este 
+    No cenário previamente descrito, a plataforma Java se destacou desde o seu 
+    sur\-gi\-men\-to. A fim de facilitar o desenvolvimento das aplicações para este 
     ambiente, surgiram diversos frameworks, bases de infra-estruturas 
     extensíveis, voltadas para um nicho em particular. A partir destas o 
     desenvolvedor irá retirar os insumos para a construção de aplicações.
@@ -133,14 +140,14 @@
     Com o passar do tempo, outras linguagens dentro e fora da plataforma foram 
     surgindo com propostas um pouco diferentes da linguagem Java. Algumas com 
     características funcionais, outras com características totalmente orientadas 
-    a objetos. Porém todas com um foco em comum, aumento de produtividade, 
+    a objetos, porém, todas com um foco em comum, aumento de produtividade, 
     possibilitando entregar mais funcionalidades com menos código. Em cima 
     dessas novas linguagens, novos frameworks foram sendo desenvolvidos para 
     resolver de forma melhor os antigos problemas.
     
     Nesse cenário, em julho de 2004, surgiu o framework Ruby on Rails 
-    para a linguagem Ruby. Suas bases advêm do padrão de projeto MVC. Voltado 
-    para o desenvolvimento de aplicações web, rapidamente adquiriu adeptos por 
+    para a linguagem Ruby. Suas bases advêm do padrão de projeto arquitetural MVC. 
+    Voltado para o desenvolvimento de aplicações web, rapidamente adquiriu adeptos por 
     facilitar e agilizar a criação de aplicações através de geradores de código 
     para as tarefas comuns, além, é claro, da utilização de uma linguagem de mais 
     fácil compreensão.
@@ -166,45 +173,34 @@
 
 \section{A linguagem Groovy} \label{sec:linguagem_groovy}
 
-    A linguagem Groovy é relativamente nova, foi criada em  Agosto de 2003, é 
-    dinamicamente tipada e pode ser interpretada ou compilada. Foi elaborada 
-    para ser executada especificamente pela Java Virtual Machine (JVM) e sofreu 
-    grande influência das linguagens Ruby, Python, Perl, Smalltalk e, obviamente, 
-    de Java.
+    A linguagem Groovy, criada em  Agosto de 2003, é dinamicamente tipada e pode
+    ser interpretada ou compilada. Foi elaborada para ser executada especificamente
+    pela JVM e sofreu grande influência das linguagens Ruby, Python, Perl, 
+    Smalltalk e, obviamente, de Java.
     
-    Como dito anteriormente, a linguagem Groovy foi elaborada tendo a JVM como 
-    plataforma principal. Isso permitiu que pouca ou nenhuma distorção possa 
-    existir entre as linguagens, além disso, esta escolha reduziu de maneira 
-    drástica a curva de aprendizado. Sua API, Application Programming Interface, 
-    é toda baseada na API Java padrão, aliado a isto, a integração com a JVM no 
-    nível de bytecode permite a interoperabilidade de Java para Groovy bem como 
-    o caminho reverso. Dessa maneira, desenvolvedores Java automaticamente 
-    também desenvolvem em Groovy.
+    A elaboração da linguagem Groovy com a JVM como plataforma principal permitiu 
+    que pouca ou nenhuma distorção possa existir entre as linguagens, além disso, 
+    esta escolha reduziu de maneira drástica a curva de aprendizado. Sua API, 
+    \emph{Application Programming Interface} (Interface de Programação de Aplicações), 
+    é toda baseada na API Java padrão; aliado a isto, a integração com a JVM no 
+    nível de \emph{bytecode} permite a interoperabilidade de Java para Groovy bem como 
+    o caminho reverso. Dessa maneira, desenvolvedores Java automaticamente também 
+    desenvolvem em Groovy.
     
     Dentre as funcionalidades que a linguagem possui é possível citar o uso de 
-    closures,  e propriedades nativas bem como a utilização de meta-programação, 
-    que como conseqüência direta proporciona a criação das chamadas Domain 
-    Specific Languages ou simplesmente DSL's.
+    \emph{closures},  e propriedades nativas bem como a utilização de metaprogramação, 
+    que como consequência direta proporciona a criação das chamadas \emph{Domain 
+    Specific Languages} ou simplesmente DSL's.
 
 \subsection{Instalação}
     
     No endereço \url{http://groovy.codehaus.org/Download} é possível fazer o 
     download das ferramentas necessárias à utilização da linguagem. Lá é possível
     encontrar instaladores para as plataformas Windows e Debian bem como a versão
-    binária que pode ser usada em qualquer sistema operacional. Para o Mac Os X 
+    binária que pode ser usada em qualquer sistema operacional. Para o Mac OS X 
     é possível utilizar algum dos gerenciadores de pacotes existentes como o 
-    macports ou o homebrew.
+    Macports ou o Homebrew.
 
-%   Apagando por recomendação do PAZZO
-%    
-%    Neste artigo será exemplificada a instalação a partir da versão binária pela 
-%    independência de plataforma. O primeiro passo é descompactar o arquivo em 
-%    algum diretório e criar a variável de ambiente \emph{GROOVY\_HOME} que aponta 
-%    para o diretório em questão. O passo seguinte é adicionar ao \emph{PATH} do 
-%    ambiente a variável recém criada. Caso ainda não exista, é necessário criar 
-%    a variável de ambiente \emph{JAVA\_HOME} que aponta para o diretório da 
-%    instalação do Java Development Kit.
-    
     Após a instalação do Groovy deve ser possível agora executar no console os comandos:
     
     \begin{description}
@@ -229,14 +225,14 @@
                     {src/groovy/Hello.groovy}
 
     Executando o comando:
-    \begin{lstlisting}[language=]
+    \begin{lstlisting}[basicstyle={\small \ttfamily}]
         groovy Hello.groovy
     \end{lstlisting}
     
     O resultado, como esperado, é que no console o texto "Hello Groovy Script World"
     seja impresso. Isso acontece por que o interpretador internamente cria um 
-    método main e insere o código contido no arquivo Hello.groovy. O código Java
-    equivalente pode ser observado na listagem \ref{HelloGroovyScriptInJava}.
+    método \texttt{main} e insere o código contido no arquivo \texttt{Hello.groovy}.
+    O código Java equivalente pode ser observado na listagem \ref{HelloGroovyScriptInJava}.
     
     \lstinputlisting[
                         style=Java,
@@ -290,7 +286,7 @@
     A depender da forma declarada é possível que a string produzida aceite ou não
     o uso de interpolação, ou seja, a inserção de expressões que serão avaliadas
     e concatenadas à string. A listagem \ref{HelloGroovyScriptWithFunctions} exibe
-    este conceito na linha 2 onde o resultado da expressão delimitada por \$\{ e \}
+    este conceito na linha 2 onde o resultado da expressão deli\-mitada por \$\{ e \}
     é concatenado à string. A listagem \ref{HelloGroovyScriptWithFunctionsInJava}
     exibe o código Java equivalente.
     
@@ -308,15 +304,15 @@
     na string final. 
 
     Os tipos 4 e 5 citados anteriormente produzem um tipo especial de string que
-    pode ser expandido por mais de uma linha, por isso são chamados de multilinhas.
+    pode ser expandido por mais de uma linha, por isso são chamados de \emph{multilinhas}.
     Uma utilização prática e direta da interpolação de strings em conjunto com as
-    strings multilinhas é a criação de templates de forma transparente. 
+    strings \emph{multili\-nhas} é a criação de \emph{templates} de forma transparente. 
     
     Como dito anteriormente, uma outra forma de declarar uma string é inserindo
     conteúdo entre \emph{/}. Esse tipo de declaração permite criar valores sem 
-    ter que escapar caracteres especiais com exceção do próprio \emph{/}. Assim, 
-    é possível simplificar por exemplo a escrita de expressões regulares como 
-    mostra a listagem \ref{SlashyStringWithRegex}.
+    ter que utilizar ca\-racteres de escape para símbolos especiais com exceção 
+    do próprio \emph{/}. Assim, é possível simplificar por exemplo a escrita de 
+    expressões regulares como mostra a listagem \ref{SlashyStringWithRegex}.
     
     \lstinputlisting[
                         style=Groovy,
@@ -329,7 +325,7 @@
 \subsection{Métodos e Closures}
 
     A linguagem possibilita duas formas de estruturação de blocos de código 
-    reutilizáveis. Métodos ou Funções e Closures. A sintaxe de definição de métodos
+    reutilizáveis. Métodos e Closures. A sintaxe de definição de métodos
     é bastante simples e já foi vista nos exemplos anteriores. É necessário apenas
     que se façam alguns esclarecimentos sobre métodos:
 
@@ -376,14 +372,13 @@
 \subsection{Collections}
 
     Groovy possui vários tipos de coleções incluindo listas, mapas, conjuntos,
-    arrays e intervalos. Neste artigo, apenas listas e mapas serão explicados.
+    \texttt{arrays} e intervalos. Neste artigo, apenas listas e mapas serão explicados.
     
 \subsubsection{Listas}
 
-    Assim como em Java, uma lista em Groovy é uma coleção ordernada de objetos.
-    Listas em Groovy são uma implementação da interface \emph{java.util.List} sua 
-    sintaxe de declaração é semelhante à de arrays como pode ser visto na 
-    Listagem \ref{GroovyLists}.
+    Assim como em Java, uma lista em Groovy é uma coleção ordernada de objetos e 
+    implementam a interface \emph{java.util.List}. Sua sintaxe de declaração é 
+    semelhante à de \texttt{arrays} como pode ser visto na Listagem \ref{GroovyLists}.
     
     \lstinputlisting[
                         style=Groovy,
@@ -395,10 +390,10 @@
 \subsubsection{Mapas}
 
     Assim como em Java, um mapa em Groovy é uma coleção não ordenada de pares 
-    chave/valor onde as chaves são únicas. A implementação padrão utilizada em 
-    Groovy para um mapa é a \emph{java.util.LinkedHashMap} entretanto é possível
-    utilizar outras implementações bastando apenas inicializar a variável com o 
-    tipo desejado.
+    chave/valor onde as chaves são únicas. Os mapas seguem a interface \emph{java.util.Map}
+    e têm como implementação padrão utilizada a classe \emph{java.util.LinkedHashMap}.
+    Entretanto, é possível utilizar outras implementações bastando apenas inicializar
+    a variável com o tipo desejado.
     
     De maneira semelhante às listas os mapas podem ser declarados com a notação
     de arrays onde as chaves não são números. A listagem \ref{GroovyMaps} exemplifica
@@ -411,12 +406,12 @@
                     ]
                     {src/groovy/GroovyMaps.groovy}
     
-\subsection{Sobrescrita de Operadores}  
+\subsection{Redefinição de Operadores}  
     
     Em algumas linguagens é possível redefinir operadores, como por exemplo em 
-    C++ e Ruby. Diferente de Java, Groovy que seus operadores sejam redefinidos,
+    C++ e Ruby. Diferente de Java, Groovy permite que seus operadores sejam redefinidos,
     para tanto, se utiliza de métodos com assinaturas pré-definidas nas classes.
-    Assim, é possível, por exemplo, fazer com que dois objetos do tipo BigDecimal
+    Assim, é possível, por exemplo, fazer com que dois objetos do tipo \texttt{BigDecimal}
     possam ser adicionados utilizando o operador de adição +. A tabela 
     \ref{tab:OperatorDefinition}, retirada do cartão de referência de \cite{groovy:refcard} 
     exibe os métodos que precisam ser definidos para a utilização dos respectivos 
@@ -469,9 +464,9 @@
 
 \subsubsection{Operador Elvis}
 
-    De acordo com \cite{beginingGroovy:2008} o operador elvis (?:) é equivalente
-    ao operador de if ternário em Java, como demonstra a listagem \ref{ternaryIfJava}.
-    Em Groovy o operador Elvis permite a escrita de maneira ainda mais concisa 
+    De acordo com \cite{beginingGroovy:2008} o operador \texttt{elvis} (\texttt{?:}) é equivalente
+    ao operador de \texttt{if} ternário em Java, como demonstra a listagem \ref{ternaryIfJava}.
+    Em Groovy o operador \texttt{elvis} permite a escrita de maneira ainda mais concisa 
     como pode ser visto na listagem \ref{elvisOperatorGroovy} com o código equivalente.
     
     \lstinputlisting[
@@ -484,18 +479,19 @@
     \lstinputlisting[
                         style=Groovy,
                         caption=Funcionamento do Operador Elvis,
-                        label=elvisOperatorGroovy
+                        label=elvisOperatorGroovy,
+                        escapeinside=-+
                     ]
                     {src/groovy/ElvisOperator.groovy}
                     
 \subsubsection{Operador Spread}
 
-    O operador de spread (*.) como explicado na seção de operadores especiais do
-    livro Beginning Groovy and Grails From Novice to Professional\cite{beginingGroovy:2008} 
+    O operador de \emph{spread} (\texttt{*.}) como explicado na seção de operadores especiais do
+    livro \emph{Beginning Groovy and Grails From Novice to Professional}\cite{beginingGroovy:2008} 
     permite que uma operação seja realizada nos itens de uma coleção de maneira 
-    mais sucinta. A listagem a \ref{SpreadOperator} reproduz a listagem listagem
-    2-35 do livro citado no início do parágrafo exemplificando duas maneiras de 
-    iterar numa lista, através da closure collect() e do operador de spread.
+    mais sucinta. A listagem \ref{SpreadOperator} reproduz a listagem 2-35 do livro
+    citado no início do parágrafo exemplificando duas maneiras de iterar numa lista, 
+    através da \emph{closure} \texttt{collect()} e do operador de \emph{spread}.
     
     \lstinputlisting[
                         style=Groovy,
@@ -519,43 +515,41 @@
 %       spread operator -> DONE
 %
 
-\subsection{Grails Framework}
-
-\subsubsection{Introdução}
-
-    O Framework é focado no desenvolvimento rápido de aplicações web. Utiliza como
-    base tecnologias consagradas como Spring, Hibernate, Sitemesh e Jetty. Se baseia 
+\section{Grails Framework}
+\hyphenation{e-xis-te scaffold scaffol-ding}
+    O framework é focado no desenvolvimento rápido de aplicações web. Utiliza como
+    base tecnologias consagradas como Spring, Hibernate e Sitemesh. Se baseia 
     fortemente nos princípios de convenções sobre configurações, mapeamento objeto
-    relacional, plugins, scaffolding e testes unitários \cite{beginingGroovy:2008}.
-    Pelo fato de ter groovy como base existe ainda a integração em nível de bytecode,
+    relacional, \emph{plugins}, \emph{scaffolding} e testes unitários \cite{beginingGroovy:2008}.
+    Pelo fato de ter groovy como base existe ainda a integração em nível de \emph{bytecode},
     além disso, uma aplicação Grails pode ser empacodata em um arquivo WAR, o que 
-    possibilita o deploy em qualquer servidor de aplicações JEE ou qualquer
+    possibilita a implantação em qualquer servidor de aplicações JEE ou qualquer
     container web como é o caso do Jetty (\url{http://jetty.codehaus.org/jetty/})
     ou o Tomcat (\url{http://tomcat.apache.org/download-70.cgi}).
     
-\subsubsection{Instalação}
+\subsection{Instalação}
     
-    O framework assim como o Groovy tem como requisito o Java SDK versão 5.0 ou 
-    superior com a variável de ambiente JAVA\_HOME devidamente instalada e apontando
-    para o diretório de instalação do SDK. 
+    O framework, assim como o Groovy, tem como requisito o Java SDK versão 5.0 ou 
+    superior com a variável de ambiente \texttt{JAVA\_HOME} devidamente instalada 
+    e apontando para o diretório de instalação do SDK. 
     
     De acordo com \cite{grails} os passos para a instalação do Grails são os seguintes:
     \begin{enumerate}
         \item Efetuar o download da última versão do Grails, atualmente 1.3.7, e extrair
               para um local apropriado.
-        \item Criar uma variável de ambiente chamada GRAILS\_HOME apontando para
+        \item Criar uma variável de ambiente chamada \texttt{GRAILS\_HOME} apontando para
               o diretório escolhido no passo anterior.
-        \item Adicionar ao PATH do sistema o caminho GRAILS\_HOME\textbackslash{}bin.
+        \item Adicionar ao \texttt{PATH} do sistema o caminho \texttt{GRAILS\_HOME/bin}.
     \end{enumerate}
 
     Com todos os passos executados resta abrir um terminal e executar o comando 
     \emph{grails}. Caso uma mensagem de ajuda seja exibida tudo está funcionando corretamente. 
 
-    Alguns sistemas operacionais possuem pacotes de instalação prontos como o MAC
-    OS X e o Ubuntu. Para usuários do MAC OS X com o homebrew instalado basta executar
+    Alguns sistemas operacionais possuem pacotes de instalação prontos como o Mac
+    OS X e o Ubuntu. Para usuários do Mac OS X com o Homebrew instalado basta executar
     no terminal o comando \emph{brew install grails} e, ao término, tudo deve 
     estar funcionando. Já para quem utiliza o Ubuntu é possível utilizar o comando 
-    apt-get a partir dos seguintes passos:
+    \emph{apt-get} a partir dos seguintes passos:
     
     \begin{enumerate}
         \item sudo add-apt-repository ppa:groovy-dev/grails
@@ -563,7 +557,7 @@
         \item sudo apt-get install grails
     \end{enumerate}
 
-\subsubsection{Primeira Aplicação Grails: Google Contacts Clone}
+\subsection{Primeira Aplicação Grails: Agenda de Contatos}
 
     A fim de entender o funcionamento do framework será criada uma aplicação web
     que vai explorar de uma maneira mais dinâmica as principais funcionalidades
@@ -574,18 +568,18 @@
 %    associar contatos a um grupo -> 
 %    exibir, editar, salvar e apagar contatos e grupos -> DONE
 
-    A aplicação é um clone do Google Contacts. Uma \textbf{Agenda} de contatos onde cada 
-    \textbf{contato} pode pertecer a um ou mais \textbf{grupos}. Cada \textbf{contato}
-    pode possuir foto, endereços de email e físico, telefone(s), url de site, endereço 
-    de perfil no google e etc. Na aplicação é possível \emph{listar todos os 
-    \textbf{contatos}}, \emph{listar os \textbf{contatos} agrupados}, 
-    \emph{adicionar \textbf{grupos}}, \emph{associar \textbf{contatos} a um \textbf{grupo}}
-    e \emph{exibir}, \emph{editar}, \emph{salvar} e \emph{apagar} \textbf{contatos e grupos}.
+    A aplicação é uma \textbf{agenda de contatos} onde cada \textbf{contato} pode 
+    pertencer a um ou mais \textbf{grupos}. Cada \textbf{contato} pode possuir foto,
+    endereços de e-mail e físico, telefone(s), url de site, endereço de perfil no 
+    Google etc. Na aplicação é possível \emph{listar todos os \textbf{contatos}}, 
+    \emph{listar os \textbf{contatos} agrupados}, \emph{adicionar \textbf{grupos}}, 
+    \emph{associar \textbf{contatos} a um \textbf{grupo}} e \emph{exibir}, 
+    \emph{editar}, \emph{salvar} e \emph{apagar} \textbf{contatos e grupos}.
     
     A primeira atividade necessária é criar a aplicação, para isso é necessário
     digitar no console/terminal o seguinte comando:
     
-    \begin{lstlisting}[language=]
+    \begin{lstlisting}[basicstyle={\small \ttfamily}]
         grails create-app agenda
     \end{lstlisting}
     
@@ -593,7 +587,7 @@
     o funcionamento do projeto. A partir deste momento a aplicação já pode ser 
     executada. Para tanto entre no diretório criado e digite o comando:
     
-    \begin{lstlisting}[language=]
+    \begin{lstlisting}[basicstyle={\small \ttfamily}]
         grails run-app
     \end{lstlisting}
     
@@ -604,50 +598,76 @@
     
     \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{images/firstRun.jpg}
+    \includegraphics[width=0.8\textwidth]{images/firstRun.jpg}
     \caption{Primeira execução da aplicação Agenda}
     \label{fig:firstRun}
     \end{figure}
     
     O script de criação da aplicação criou a estrutura de diretórios que pode ser
-    visualizada na imagem \ref{fig:appStructure}.
+    visualizada na imagem \ref{fig:appStructure} e descrita na tabela \ref{tab:appStructure}.
     
-    \begin{description}
-       \item [grails-app:] Diretório principal da aplicação é composto pelos diretórios a seguir:
-            \begin{description}
-                \item[conf:] contém os arquivos de configuração da aplicação
-                \item[controllers:] contém todas as classes que executam a função de controllers na aplicação, corresponde ao C do MVC
-                \item[domain:] contém as domain classes, representam entidades da aplicação, são automaticamente persistentes, corresponde ao M do MVC
-                \item[i18n:] contém os arquivos properties utilizados na internacionalização
-                \item[services:] contém as classes de services, são beans do Spring
-                \item[taglib:] contém os arquivos de taglib customizadas para utilização nas views escritas com Groovy Server Pages (GSP)
-                \item[utils:] contém utilitários específicos do Grails
-                \item[views:] contém todos os arquivos GSP da aplicação, corresponde ao V do MVC
-            \end{description}
-        \item[lib:] Contém todos os arquivos .jar externos que são necessários a aplicação como por exemplos drivers JDBC 
-        \item[scripts:] Contém scripts customizados para utilização na aplicação
-        \item[src:] Contém diretórios groovy e java com código fonte que estarão disponíveis para aplicação em tempo de execução
-        \item[target:] Contém todos os arquivos binários da aplicação
-        \item[test:] Contém diretórios para testes de unidade e de integração
-   \end{description}
+     \begin{table}[h]
+          \centering
+          \caption{Sobrescrita de Operadores}
+          \label{tab:appStructure}
+          \begin{tabular}{| l | l |}
+          \hline
+          {\bf Diretório} & {\bf Descrição} \\
+          \hline
+              grails-app & Diretório principal da aplicação \\
+          \hline
+               grails-app/conf & Contém os arquivos de configuração da aplicação \\
+          \hline
+              grails-app/controllers &  Contém todas os controllers da aplicação, \\
+                                     & corresponde ao C do MVC\\
+          \hline
+              grails-app/domain & Contém as entidades da aplicação, são automaticamente\\
+                                & persistentes, corresponde ao M do MVC \\
+          \hline
+              grails-app/i18n & Contém os arquivos properties utilizados na internacionalização \\
+          \hline
+              grails-app/services  & Contém as classes de services, são beans do Spring \\
+          \hline
+              grails-app/taglib & Contém os arquivos de tags customizadas para utilização \\
+                                & nas views escritas com Groovy Server Pages (GSP) \\
+          \hline
+              grails-app/utils & Contém utilitários específicos do Grails \\ 
+          \hline
+              grails-app/views & Contém todos os arquivos GSP da aplicação, corresponde \\
+                               & ao V do MVC \\
+          \hline
+              lib & Contém todos os arquivos .jar externos que são necessários a\\
+                  &  aplicação como por exemplos drivers JDBC \\
+          \hline
+              scripts & Contém scripts customizados para utilização na aplicação \\
+          \hline
+              src & Contém diretórios groovy e java com código fonte que \\
+                  & estarão disponíveis para aplicação em tempo de execução \\
+          \hline
+              target & Contém todos os arquivos binários da aplicação \\
+          \hline
+              test & Contém diretórios para testes de unidade e de integração\\
+          \hline
+          \end{tabular}  
+      \end{table}
     
     \begin{figure}[h!]
     \centering
-    \includegraphics[width=.4\textwidth]{images/appStructure.jpg}
+    \includegraphics[width=.25\textwidth]{images/appStructure.jpg}
     \caption{Estrutura de pastas e arquivos criadas}
     \label{fig:appStructure}
     \end{figure}
 
-\subsubsection{Criando Domain Classes - Os Contatos da Aplicação}
+\subsection{Criando Domain Classes - Os Contatos da Aplicação}
 
-    Segundo \cite{pragmaticGrails:2009} o coração do grails está nas Domain Classes.
+    Segundo \cite{pragmaticGrails:2009} o coração do \emph{Grails} está nas \emph{Domain Classes}.
     Elas são classes que representam o domínio do negócio, seus relacionamentos e
-    são persistentes. Existe a convenção que uma Domain Class está diretamente 
+    são persistentes. Existe a convenção que uma \emph{Domain Class} está diretamente 
     ligada a uma tabela em um banco de dados.
     
-    Agora que já se sabe o que é uma Domain Class, é possível criar a primeira
-    classe do sistema de contatos. A classe Contato, que representa um contato.
-    Um contato no sistema possui os seguintes atributos:
+    Agora que já se sabe o que é, é possível criar a primeira classe do sistema 
+    de contatos. A classe Contato, que representa um contato. Um contato no sistema
+    possui os seguintes atributos:
     
     \begin{description}
         \item[nome:] Representa o nome do contato;
@@ -656,7 +676,7 @@
     
     Para a criar uma classe de domínio utiliza-se o comando: 
 
-    \begin{lstlisting}[language=]
+    \begin{lstlisting}[basicstyle={\small \ttfamily}]
        grails create-domain-class <[pacote.]NomeDaClasse>
     \end{lstlisting}
     
@@ -672,12 +692,12 @@
     
     Assim, para criar a classe Contato devemos executar o comando:
     
-    \begin{lstlisting}[language=]
+    \begin{lstlisting}[basicstyle={\small \ttfamily}]
         grails create-domain-class agenda.Contato
     \end{lstlisting}
     
-    Com isto o framework cria uma classe chamada Contato dentro do pacote agenda 
-    e um teste unitário chamado ContatoTest também dentro do pacote agenda.
+    Com isto o framework cria uma classe chamada \texttt{Contato} dentro do pacote agenda 
+    e um teste unitário chamado \texttt{ContatoTest} também dentro do pacote agenda.
     
     O resultado final incluindo as propriedades inseridas manualmente pode ser visto
     nas listagens \ref{ContactV1} e \ref{ContactTestV1} a seguir.
@@ -697,26 +717,26 @@
                     {src/groovy/agenda/contato/ContatoTestsV1.groovy}
 
     Além das propriedades que foram inseridas, o framework insere automaticamente
-    na domain class duas propriedades: \textbf{id} e \textbf{version} e vários métodos.
+    na \emph{domain class} duas propriedades: \textbf{id} e \textbf{version} e vários métodos.
     É possível por exemplo, com o pouco código existente, salvar, atualizar, ler
-    e excluir do banco de dados. Tudo isso é possível pela natureza do Groovy, 
-    os métodos são dinâmicamente criados e injetados na classe.
+    e excluir do banco de dados. Os métodos são dinâmicamente criados e inseridos
+    na classe.
 
-\subsubsection{Acessando a aplicação}
+\subsection{Acessando a aplicação}
 
-    Até o presente momento foi criada uma Domain Class e seus respectivos testes.
+    Até o presente momento foi criada uma \emph{Domain Class} e seus respectivos testes.
     Para adicionar alguma lógica ao projeto, é preciso criar um \emph{Controller}.
-    Os controllers são responsáveis pela ligação entre as Domain Classes e as Views.
-    Assim como para todos os recursos necessários criados até agora existe um comando
-    para a facilitar a automatização, para criar um controller é necessário utilizar
-    o seguinte comando:
+    Os \emph{Controllers} são classes responsáveis pela ligação entre as \emph{Domain Classes} 
+    e as \emph{Views}. Assim como para todos os recursos necessários criados até 
+    agora existe um comando para a facilitar a automatização, para criar um 
+    \emph{Controller} é necessário utilizar o seguinte comando:
     
-    \begin{lstlisting}[language=]
+    \begin{lstlisting}[basicstyle={\small \ttfamily}]
           grails create-controller Contato
     \end{lstlisting}
     
-    A execução do comando resultará na criação da classe ContatoController dentro
-    da pasta de controllers (grails-app/controllers), o seu conteúdo é exibido na
+    A execução do comando resultará na criação da classe \texttt{ContatoController} dentro
+    da pasta de \emph{Controllers} (grails-app/controllers), o seu conteúdo é exibido na
     listagem \ref{ContactControllerV1}.
     
     \lstinputlisting[
@@ -726,12 +746,13 @@
                    ]
                    {src/groovy/agenda/contato/ContatoControllerV1.groovy}
                    
-    O controller criado possui apenas um método chamado index. Os métodos em um 
-    controller são chamados de actions. Até o presente momento, este controller
-    não executa nenhuma ação. Entretanto é possível, com poucas modificações, criar
-    funcionalidades básicas de um CRUD (Create, Retrieve, Update e Delete) sobre 
-    a Domain Class Contato. A listagem \ref{ContactControllerV2} demostra uma outra
-    funcionalidade do framework, \emph{dynamic scaffolding}. 
+    O \emph{Controller} criado possui apenas um método chamado \texttt{index}.
+    Em um \emph{Controller} todos os métodos públicos são chamados de \emph{actions}. 
+    Até o presente momento, este \emph{Controller} não executa nenhuma ação. 
+    Entretanto é possível, com poucas modificações, criar funcionalidades básicas 
+    de um \texttt{CRUD} (\emph{Create, Retrieve, Update e Delete}) sobre a 
+    \emph{Domain Class} \texttt{Contato}. A listagem \ref{ContactControllerV2} 
+    demostra uma outra funcionalidade do framework, \emph{dynamic scaffolding}. 
     
     \lstinputlisting[
                      style=Groovy,
@@ -745,12 +766,12 @@
 
     \begin{figure}[h!]
        \centering
-       \includegraphics[width=1\textwidth]{images/contactControllerScaffold.png}
+       \includegraphics[width=.7\textwidth]{images/contactControllerScaffold.png}
        \caption{Controller de Contatos}
        \label{fig:contactScaffold1}
    \end{figure}
    
-   Ao clicar em agenda.ContatoController a aplicação redireciona o usuário para
+   Ao clicar em \emph{agenda.ContatoController} a aplicação redireciona o usuário para
    a página gerada pelo scaffold, como pode-se ver na figura \ref{fig:contactScaffold2}.
    
    \begin{figure}[h!]
@@ -778,30 +799,29 @@
 
    \begin{figure}[h!]
       \centering
-      \includegraphics[width=.4\textwidth]{images/showContactScaffold.png}
+      \includegraphics[width=.3\textwidth]{images/showContactScaffold.png}
       \caption{Página de exibição de um Contact gerada dinamicamente pelo scaffold}
       \label{fig:showContactScaffold}
   \end{figure}
   
    \begin{figure}[h!]
       \centering
-      \includegraphics[width=.4\textwidth]{images/listContactScaffold.png}
+      \includegraphics[width=.3\textwidth]{images/listContactScaffold.png}
       \caption{Página de exibição dos Contacts cadastrados gerada dinamicamente pelo scaffold}
       \label{fig:listContactScaffold}
   \end{figure}
   
-\subsubsection{Complementando o modelo da aplicação}
+\subsection{Complementando o modelo da aplicação}
 
   Para complementar as funcionalidades necessárias da aplicação será necessário 
-  criar novas domain classes e gerar os respectivos controllers. Assim, vamos criar 
-  as Domain Classes Grupo e PropriedadeContato. A Domain Class Grupo representa o
-  que o nome já deixa claro. Enquanto à Domain Class PropriedadeContato representa
-  o conceito de propriedades dinâmicas para o nosso Contato. Assim, é possível
-  criar diversos tipos de propriedades para cada contato, e além disso, é possível
-  que contatos distintos tenham propriedades distintas além do nome e email. A 
-  listagem \ref{GrupoV1} mostra a Domain Class Grupo e a listagem \ref{GrupoControllerV1}
-  o seu respectivo Controller. 
-  
+  criar novas \emph{Domain Classes} e gerar os respectivos \emph{Controllers}. 
+  Assim, vamos criar as \emph{Domain Classes} \texttt{Grupo} e \texttt{PropriedadeContato}.
+  A classe \texttt{Grupo} representa o que o nome já deixa claro. Enquanto que a classe
+  \texttt{PropriedadeContato} representa o conceito de propriedades dinâmicas para
+  o nosso \texttt{Contato}. Assim, é possível criar diversos tipos de propriedades 
+  para cada contato, e além disso, é possível que contatos distintos te\-nham propriedades
+  distintas além do nome e email. A listagem \ref{GrupoV1} mostra a \emph{Domain Class}
+  \texttt{Grupo} e a listagem \ref{GrupoControllerV1} o seu respectivo \emph{Controller}. 
   
   \lstinputlisting[
                     style=Groovy,
@@ -817,12 +837,12 @@
                   ]
                   {src/groovy/agenda/grupo/GrupoControllerV1.groovy}
  
-  A listagem \ref{GrupoV1} exibe uma novidade em uma Domain Class, requisitos de 
-  validação estão inseridos na classe através da closure estatica \textbf{constraints}.
+  A listagem \ref{GrupoV1} exibe uma novidade, requisitos de validação estão inseridos
+  na classe através da \texttt{closure} estática \textbf{constraints}.
   Nela estão definidas duas validações para a propriedade \textbf{nome}. A primeira
   validação diz que nome não pode ser vazio. A segunda diz que nome não pode ser
-  nulo. Estas restrições serão analisadas sempre que o método \emph{validate()} 
-  for invocado. Isto ocorre, por exemplo, sempre que o método \emph{save} for 
+  nulo. Estas restrições serão analisadas sempre que o método \texttt{validate()} 
+  for invocado. Isto ocorre, por exemplo, sempre que o método \texttt{save} for 
   invocado. A figura \ref{fig:ValidacaoGrupo} mostra o resultado da validação da 
   tentativa de criação de um grupo sem nome.
   
@@ -833,32 +853,53 @@
        \label{fig:ValidacaoGrupo}
    \end{figure} 
   
-  Segundo \cite{pragmaticGrails:2009} existem as seguintes validações nativas no
-  framework:
+  A tabela \ref{tab:Validadores} ilustra as possíveis validações nativas no 
+  framework segundo \cite{pragmaticGrails:2009}.
+
+  \begin{table}[h!]
+        \centering
+        \caption{Validadores nativos do Grails}
+        \label{tab:Validadores}
+        \begin{tabular}{| l | c | l |}
+        \hline
+        {\bf Validador} & {\bf Parâmetros} & {\bf Descrição} \\
+        \hline
+            \texttt{blank} & \textbf{Boolean} & Permite que um valor seja uma string vazia \\
+        \hline
+            \texttt{nullable} & \textbf{Boolean} & Permite valores nulos \\
+        \hline
+            \texttt{max} & \textbf{Integer}  & Valor máximo \\
+        \hline
+            \texttt{min} & \textbf{Integer} & Valor mínimo \\
+        \hline
+            \texttt{size} & \textbf{Range} &  Determina os extremos \\
+        \hline
+            \texttt{maxSize}  & \textbf{Integer} & O tamanho máximo de uma String ou Collection \\
+        \hline
+            \texttt{minSize} & \textbf{Integer} & O tamanho mínimo de uma String ou Collection \\
+        \hline
+            \texttt{inList} & \textbf{List} & Lista de valores válidos \\ 
+        \hline
+            \texttt{matches} & \textbf{String} &  O valor deve ser reconhecido por uma expressão regular \\
+        \hline
+            \texttt{unique} & \textbf{Boolean} &  Reforça a unicidade do valor no Banco de Dados \\
+        \hline
+            \texttt{url} & \textbf{Boolean} & O valor deve ser uma URL válida \\
+        \hline
+            \texttt{email} & \textbf{Boolean} & O valor deve ser um email válido \\
+        \hline
+            \texttt{creditCard} & \textbf{Boolean} & O valor deve ser um número válido de cartão de crédito \\
+        \hline
+            \texttt{validator} & \textbf{Closure} & Recebe uma closure com dois parâmetros, o primeiro sendo \\
+                               &                  & o valor e o segundo (opcional) a instância sendo validada \\
+        \hline
+        \end{tabular}  
+    \end{table}
   
-  \begin{description}
-      \item[blank:(true|false)] Permite que um valor seja uma string vazia
-      \item[nullable:(true|false)] Permite valores nulos
-      \item[max:] Valor máximo
-      \item[min:] Valor mínimo
-      \item[size:] Recebe um objeto do tipo Range para determinar os extremos
-      \item[maxSize:] O tamanho máximo de uma String ou Collection
-      \item[minSize:] O tamanho mínimo de uma String ou Collection
-      \item[inList:] Lista de valores válidos
-      \item[matches:] O valor deve ser reconhecido por uma expressão regular
-      \item[unique:(true|false)] Reforça a unicidade do valor no Banco de Dados
-      \item[url:(true|false)] O valor deve ser uma URL válida
-      \item[email:(true|false)] O valor deve ser um email válido
-      \item[creditCard:(true|false)] O valor deve ser um número válido de cartão
-                                     de crédito
-      \item[validator:] Recebe uma closure com dois parâmetros, o primeiro sendo 
-                        o valor e o segundo (opcional) a instância sendo validada
-  \end{description}
-  
-  Além de efetuar validação a closure constraint serve para orientar o scaffolding.
-  Customizações básicas podem ser criadas apenas alterando essa closure. As listagens
+  Além de efetuar validação a \texttt{closure constraint} serve para orientar o \emph{scaffolding}.
+  Customizações básicas podem ser criadas apenas alterando essa \texttt{closure}. As listagens
   \ref{PropriedadeContatoV1} e \ref{ContatoV2} exibem respectivamente as classes
-  PropriedadeContato e a classe Contato atualizada com as validações.
+  \texttt{PropriedadeContato} e a classe \texttt{Contato} atualizada com as validações.
   
   \lstinputlisting[
                       style=Groovy,
@@ -874,26 +915,26 @@
                   ]
                   {src/groovy/agenda/contato/ContatoV2.groovy}
     
-\subsubsection{Relacionamentos entre classes}
+\subsection{Relacionamentos entre classes}
     
     Seguindo o fluxo de desenvolvimento da aplicação iremos agora tratar dos relacionamentos
-    entre as classes criadas até o momento. Para a agenda, é claro que 1 Grupo
-    possui várias referências à Contatos e que cada Contato pode ter várias propriedades
-    além de nome e email. Para criar relacionamentos entre as classes o framework 
-    apresenta o GORM. Uma abstração acima do Hibernate e que pode ser facilmente
-    configurado.
+    entre as classes criadas até o momento. Para a agenda, é claro que 1 \texttt{Grupo}
+    possui várias referências à \texttt{Contatos} e que cada \texttt{Contato} pode
+    ter várias propriedades além de \textbf{nome} e \textbf{email}. Para criar 
+    relacionamentos entre as classes o framework apresenta o \textbf{GORM}. Uma 
+    abstração acima do Hibernate e que pode ser facilmente configurado.
     
-    Propriedades Simples e relacionamentos \textbf{1 para 1} podem ser configurados
+    Propriedades simples e relacionamentos \textbf{1 para 1} podem ser configurados
     apenas utilizando o mecanismo de validação em conjunto com a definição do tipo.
-    Esta é a razão pela qual as propriedades das Domain Classes criadas até o momento
-    utilizam tipos em vez da palavra chave \textbf{def}, o que seria perfeitamente
+    Esta é a razão pela qual as propriedades das \emph{Domain Classes} criadas até o momento
+    utilizam tipos em vez da palavra chave \texttt{def}, o que seria perfeitamente
     possível.
     
-    Relacionamentos \textbf{1 para muitos} como no caso entre Grupo e Contato são
-    configurados utilizando uma propriedade estática chamada hasMany. As chaves
+    Relacionamentos \textbf{1 para muitos} como no caso entre \texttt{Grupo} e \texttt{Contato} são
+    configurados utilizando uma propriedade estática chamada \texttt{hasMany}. As chaves
     do mapa representam o nome das propriedades na classe que detém o relacionamento
     e os valores são os tipos dos objetos do relacionamento. A listagem \ref{GrupoV2}
-    mostra o relacionamento entre um Grupo e seus diversos Contatos.
+    mostra o relacionamento entre um \texttt{Grupo} e seus diversos \texttt{Contatos}.
     
     \lstinputlisting[
                       style=Groovy,
@@ -902,9 +943,9 @@
                     ]
                     {src/groovy/agenda/grupo/GrupoV2.groovy}
     
-    A closure hasMany recebe um mapa contendo o nome das propriedades e seus respectivos
-    tipos. A leitura fluída permite quase que uma tradução direta de que um Grupo
-    possui muitos Contatos. O mesmo se aplica para as propriedades dos contatos, 
+    A \texttt{closure hasMany} recebe um mapa contendo o nome das propriedades e seus respectivos
+    tipos. A leitura fluída permite quase que uma tradução direta de que um \texttt{Grupo}
+    possui muitos \texttt{Contatos}. O mesmo se aplica para as propriedades dos contatos, 
     como pode ser visto na listagem \ref{ContatoV3}.
     
     \lstinputlisting[
@@ -914,23 +955,23 @@
                     ]
                     {src/groovy/agenda/contato/ContatoV3.groovy}
     
-    Para relacionamentos \textbf{muitos-para-muitos} usa-se a close hasMany e a 
-    propriedade \emph{belongsTo} que representa o lado que detém a posse do relacionamento.
+    Para relacionamentos \textbf{muitos-para-muitos} usa-se a \texttt{closure hasMany} e a 
+    propriedade \texttt{belongsTo} que representa o lado que detém a posse do relacionamento.
     
 
-\subsubsection{Materializando Controllers e Views}
+\subsection{Materializando Controllers e Views}
     
-    Até o presente momento, todo o código escrito se encontra nas domain classes.
-    Os controllers utilizam scaffolding e não existe código de view. Para implementar
+    Até o presente momento, todo o código escrito se encontra nas \emph{Domain Classes}.
+    Os \emph{Controllers} utilizam \emph{scaffolding} e não existe código de \emph{View}. Para implementar
     as funcionalidades restantes do projeto se faz necessário alterar o código dos
-    controllers. Para isso, o seguinte comando deve ser executado:
+    \emph{Controllers}. Para isso, o seguinte comando deve ser executado:
     
-    \begin{lstlisting}[language=]
+    \begin{lstlisting}[basicstyle={\small \ttfamily}]
            grails generate-all "*"
     \end{lstlisting}
     
-    Isso irá fazer com que o código dinamicamente gerado do scaffold seja "materializado"
-    nos controllers permitindo assim, que seja modificado. O resultado final pode
+    Isso irá fazer com que o código dinamicamente gerado do \emph{scaffolding} seja "materializado"
+    nos \emph{Controllers} permitindo assim, que seja modificado. O resultado final pode
     ser visto na listagem \ref{ContatoControllerV3}.
     
     \lstinputlisting[
@@ -940,22 +981,22 @@
                    ]
                    {src/groovy/agenda/contato/ContatoControllerV3.groovy}
     
-    De maneira semelhante o controller de grupos possui os mesmos métodos. Em um
-    controller os métodos públicos são chamados de actions. Cada action possui uma
-    view associada. A listagem \ref{ContatoCreateView} exibe a view associada à
-    action create.
+    De maneira semelhante o \emph{Controller} de \texttt{Grupos} possui os mesmos métodos. 
+    Cada \emph{action} possui uma  \emph{View} associada. A listagem \ref{ContatoCreateView} 
+    exibe a \emph{View} associada à \texttt{action create}.
     
     \lstinputlisting[
                      style=java,
                      caption=View da action create,
-                     label=ContatoCreateView
+                     label=ContatoCreateView,
+                     basicstyle=\small
                    ]
                    {src/groovy/agenda/contato/createV1.gsp}
     
-\subsubsection{Associando Contatos a Grupos}
+\subsection{Associando Contatos a Grupos}
 
-    Para associar um \textbf{contato} a um \textbf{grupo} deve-se alterar o controller
-    GrupoController criando uma action responsável para a tarefa.
+    Para associar um \textbf{contato} a um \textbf{grupo} deve-se alterar o \emph{Controller}
+    \texttt{GrupoController} criando uma \emph{action} responsável para a tarefa.
     
     
 %iniciar uma subseção e falar sobre o grails
