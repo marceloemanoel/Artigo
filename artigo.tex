@@ -336,7 +336,7 @@
         \item Por padrão, propriedades, métodos e classes são públicos. Para alterar
               este comportamento basta utilizar o modificador de acesso correspondente
               para a visibilidade pretendida.
-        \item É possível definir parâmetros como valores padrão. Isso possibilita
+        \item É possível definir parâmetros com valores padrão. Isso possibilita
               que o mesmo método possa ser chamado de diferentes formas. A listagem
               \ref{MethodWithDefaultParameters} exemplifica a sintaxe da declaração.
     \end{enumerate}
@@ -354,7 +354,7 @@
     retornados a partir de métodos, atribuídos a propriedades ou variáveis e 
     ainda podem ser utilizados como argumentos em uma chamada de método. 
     
-    Estruturas representadas através da notação \{ ... \} representam o closures.
+    Estruturas representadas através da notação \{ ... \} representam closures.
     O código dentro das chaves é executado sempre que a closure é invocada, 
     funcionando de maneira similar aos métodos, podem inclusive ter parâmetros. 
     A diferença básica entre os dois é que as primeiras são objetos enquanto os 
@@ -408,9 +408,8 @@
     
 \subsection{Redefinição de Operadores}  
     
-    Em algumas linguagens é possível redefinir operadores, como por exemplo em 
-    C++ e Ruby. Diferente de Java, Groovy permite que seus operadores sejam redefinidos,
-    para tanto, se utiliza de métodos com assinaturas pré-definidas nas classes.
+    Assim como em algumas linguagens, como C++ e Ruby, é possível redefinir operadores.
+    Para tanto, Groovy se utiliza de métodos com assinaturas pré-definidas nas classes.
     Assim, é possível, por exemplo, fazer com que dois objetos do tipo \texttt{BigDecimal}
     possam ser adicionados utilizando o operador de adição +. A tabela 
     \ref{tab:OperatorDefinition}, retirada do cartão de referência de \cite{groovy:refcard} 
@@ -486,12 +485,13 @@
                     
 \subsubsection{Operador Spread}
 
-    O operador de \emph{spread} (\texttt{*.}) como explicado na seção de operadores especiais do
-    livro \emph{Beginning Groovy and Grails From Novice to Professional}\cite{beginingGroovy:2008} 
-    permite que uma operação seja realizada nos itens de uma coleção de maneira 
-    mais sucinta. A listagem \ref{SpreadOperator} reproduz a listagem 2-35 do livro
-    citado no início do parágrafo exemplificando duas maneiras de iterar numa lista, 
-    através da \emph{closure} \texttt{collect()} e do operador de \emph{spread}.
+    O operador de \emph{spread} (\texttt{*.}) como explicado na seção de operadores
+    especiais do livro \emph{Beginning Groovy and Grails From Novice to Professional}
+    \cite{beginingGroovy:2008} permite que uma operação seja realizada nos itens 
+    de uma coleção de maneira mais sucinta. A listagem \ref{SpreadOperator} 
+    reproduz o trecho de código na seção 2-35 do livro citado no início do parágrafo 
+    exemplificando duas maneiras de iterar numa lista, através da \emph{closure} 
+    \texttt{collect()} e do operador de \emph{spread}.
     
     \lstinputlisting[
                         style=Groovy,
@@ -521,7 +521,7 @@
     base tecnologias consagradas como Spring, Hibernate e Sitemesh. Se baseia 
     fortemente nos princípios de convenções sobre configurações, mapeamento objeto
     relacional, \emph{plugins}, \emph{scaffolding} e testes unitários \cite{beginingGroovy:2008}.
-    Pelo fato de ter groovy como base existe ainda a integração em nível de \emph{bytecode},
+    Pelo fato de ter Groovy como base existe ainda a integração em nível de \emph{bytecode},
     além disso, uma aplicação Grails pode ser empacodata em um arquivo WAR, o que 
     possibilita a implantação em qualquer servidor de aplicações JEE ou qualquer
     container web como é o caso do Jetty (\url{http://jetty.codehaus.org/jetty/})
@@ -591,7 +591,7 @@
         grails run-app
     \end{lstlisting}
     
-    Imediatamente uma instância do container web tomcat será criada e estará a
+    Imediatamente uma instância do container web \emph{Tomcat} será criada e estará a
     espera de conexões na porta 8080 por padrão. Para testar se a aplicação está
     sendo executada é possível acessar o endereço \url{http://localhost:8080/agenda} 
     e o resultado deve ser semelhante ao da imagem \ref{fig:firstRun}
@@ -704,7 +704,7 @@
     
     \lstinputlisting[
                       style=Groovy,
-                      caption=Domain Class Contact com propriedades name e email,
+                      caption=Domain Class Contato com propriedades name e email,
                       label=ContactV1
                     ]
                     {src/groovy/agenda/contato/ContatoV1.groovy}
@@ -728,7 +728,7 @@
     Para adicionar alguma lógica ao projeto, é preciso criar um \emph{Controller}.
     Os \emph{Controllers} são classes responsáveis pela ligação entre as \emph{Domain Classes} 
     e as \emph{Views}. Assim como para todos os recursos necessários criados até 
-    agora existe um comando para a facilitar a automatização, para criar um 
+    agora, existe um comando para facilitar a automatização. Para criar um 
     \emph{Controller} é necessário utilizar o seguinte comando:
     
     \begin{lstlisting}[basicstyle={\small \ttfamily}]
@@ -800,14 +800,14 @@
    \begin{figure}[h!]
       \centering
       \includegraphics[width=.3\textwidth]{images/showContactScaffold.png}
-      \caption{Página de exibição de um Contact gerada dinamicamente pelo scaffold}
+      \caption{Página de exibição de um Contato gerada dinamicamente pelo scaffold}
       \label{fig:showContactScaffold}
   \end{figure}
   
    \begin{figure}[h!]
       \centering
       \includegraphics[width=.3\textwidth]{images/listContactScaffold.png}
-      \caption{Página de exibição dos Contacts cadastrados gerada dinamicamente pelo scaffold}
+      \caption{Página de exibição dos Contatos cadastrados gerada dinamicamente pelo scaffold}
       \label{fig:listContactScaffold}
   \end{figure}
   
@@ -981,7 +981,7 @@
                    ]
                    {src/groovy/agenda/contato/ContatoControllerV3.groovy}
     
-    De maneira semelhante o \emph{Controller} de \texttt{Grupos} possui os mesmos métodos. 
+    De maneira semelhante, o \emph{Controller} de \texttt{Grupos} possui os mesmos métodos. 
     Cada \emph{action} possui uma  \emph{View} associada. A listagem \ref{ContatoCreateView} 
     exibe a \emph{View} associada à \texttt{action create}.
     
@@ -1021,60 +1021,6 @@
 %       GSP
 %   plugins
 %\section{Figures and Captions}\label{sec:figs}
-%
-%Figure and table captions should be centered if less than one line
-%(Figure~\ref{fig:exampleFig1}), otherwise justified and indented by 0.8cm on
-%both margins, as shown in Figure~\ref{fig:exampleFig2}. The caption font must
-%be Helvetica, 10 point, boldface, with 6 points of space before and after each
-%caption.
-%
-%\begin{figure}[ht]
-%\centering
-%\includegraphics[width=.5\textwidth]{fig1.jpg}
-%\caption{A typical figure}
-%\label{fig:exampleFig1}
-%\end{figure}
-%
-%\begin{figure}[ht]
-%\centering
-%\includegraphics[width=.3\textwidth]{fig2.jpg}
-%\caption{This figure is an example of a figure caption taking more than one
-%  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
-%\label{fig:exampleFig2}
-%\end{figure}
-%
-%In tables, try to avoid the use of colored or shaded backgrounds, and avoid
-%thick, doubled, or unnecessary framing lines. When reporting empirical data,
-%do not use more decimal digits than warranted by their precision and
-%reproducibility. Table caption must be placed before the table (see Table 1)
-%and the font used must also be Helvetica, 10 point, boldface, with 6 points of
-%space before and after each caption.
-%
-%\begin{table}[ht]
-%\centering
-%\caption{Variables to be considered on the evaluation of interaction
-%  techniques}
-%\label{tab:exTable1}
-%\includegraphics[width=.7\textwidth]{table.jpg}
-%\end{table}
-%
-%\section{Images}
-%
-%All images and illustrations should be in black-and-white, or gray tones,
-%excepting for the papers that will be electronically available (on CD-ROMs,
-%internet, etc.). The image resolution on paper should be about 600 dpi for
-%black-and-white images, and 150-300 dpi for grayscale images.  Do not include
-%images with excessive resolution, as they may take hours to print, without any
-%visible difference in the result. 
-%
-%
-%Bibliographic references must be unambiguous and uniform.  We recommend giving
-%the author names references in brackets, e.g. \cite{knuth:84},
-%\cite{boulic:91}, and \cite{smith:99} and \cite{beginingGroovy:2008}, \cite{groovy}, \cite{groovy:refcard}.
-%
-%The references must be listed using 12 point font size, with 6 points of space
-%before each reference. The first line of each reference should not be
-%indented, while the subsequent should be indented by 0.5 cm.
 
 \bibliographystyle{sbc}
 \bibliography{artigo}
