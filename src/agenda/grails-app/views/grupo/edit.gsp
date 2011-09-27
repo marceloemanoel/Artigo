@@ -41,7 +41,14 @@
                   <label for="contatos"><g:message code="grupo.contatos.label" default="Contatos" /></label>
                 </td>
                 <td valign="top" class="value ${hasErrors(bean: grupoInstance, field: 'contatos', 'errors')}">
-                  <g:select name="contatos" from="${agenda.Contato.list()}" multiple="yes" optionKey="id" size="15" value="${grupoInstance?.contatos*.id}" />
+                  <ul>
+                    <g:each in="${agenda.Contato.list()}" var="contato">
+                      <li>
+                        <g:checkBox name="" checked="${grupoInstance.contatos.contains(contato)}" onclick="associarContato(${contato.id})"/>
+                        <g:link controller="contato" action="show" id="${contato.id}">${contato?.nome}</g:link>
+                      </li>
+                    </g:each>
+                  </ul>
                 </td>
               </tr>
             </tbody>
@@ -53,5 +60,18 @@
         </div>
       </g:form>
     </div>
+    <script type="text/javascript">
+        function associarContato(contatoId){
+          $.ajax({
+            url: "associarContato",
+            data: {
+              "contato.id":contatoId,
+              "grupo.id": "${grupoInstance.id}"
+            },
+            dataType: "json"
+          });
+        }        
+    </script>
+    
   </body>
 </html>

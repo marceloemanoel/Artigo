@@ -8,8 +8,16 @@ class GrupoController {
         def contato = Contato.get(params.contato.id)
         def grupo = Grupo.get(params.grupo.id)
         
-        grupo.addToContatos(contato)
-        grupo.save()
+        if(grupo) {
+          if(grupo.contatos.contains(contato)){
+            grupo.removeFromContatos(contato)
+          }
+          else{
+            grupo.addToContatos(contato)
+          }
+          grupo.save()
+        }
+        render (status: 200)
     }
     
     def index = {

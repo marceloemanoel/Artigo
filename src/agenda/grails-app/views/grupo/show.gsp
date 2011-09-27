@@ -33,7 +33,7 @@
               <td valign="top" style="text-align: left;" class="value">
                 <ul>
                   <g:each in="${grupoInstance.contatos}" var="contato">
-                    <li><g:link controller="contato" action="show" id="${contato.id}">${contato?.encodeAsHTML()}</g:link></li>
+                    <li><g:link controller="contato" action="show" id="${contato.id}">${contato?.nome}</g:link></li>
                   </g:each>
                 </ul>
               </td>

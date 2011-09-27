@@ -565,7 +565,7 @@
 %    listar todos os contatos -> DONE
 %    listar os contatos agrupados -> 
 %    adicionar grupos -> DONE
-%    associar contatos a um grupo -> 
+%    associar contatos a um grupo -> DONE
 %    exibir, editar, salvar e apagar contatos e grupos -> DONE
 
     A aplicação é uma \textbf{agenda de contatos} onde cada \textbf{contato} pode 
@@ -986,7 +986,7 @@
     exibe a \emph{View} associada à \texttt{action create}.
     
     \lstinputlisting[
-                     style=java,
+                     style=JAVA,
                      caption=View da action create,
                      label=ContatoCreateView,
                      basicstyle=\small
@@ -997,6 +997,69 @@
 
     Para associar um \textbf{contato} a um \textbf{grupo} deve-se alterar o \emph{Controller}
     \texttt{GrupoController} criando uma \emph{action} responsável para a tarefa.
+    A listagem \ref{GrupoControllerV4} mostra o código da action recém criada.
+    
+    \lstinputlisting[
+                     style=groovy,
+                     caption=Action associarContato,
+                     label=GrupoControllerV4
+                   ]
+                   {src/groovy/agenda/grupo/GrupoControllerV4.groovy}
+    
+    As linhas 2 e 3 respectivamente, capturam dos parâmetros enviados para a action
+    os id do contato e do grupo e carregam na memória os objetos correspondentes.
+    A linha 5 testa a existência do grupo selecionado, na linha 6 ocorre a checagem
+    através do relacionamento entre grupo e contato se o contato selecionado já está
+    associado ao grupo. Em caso positivo, o contato é desassociado do grupo, caso
+    contrário, ele é associado ao grupo. A linha 14 por sua vez, encerra a requisição
+    e retorna o status http 200 que significa sucesso.
+    
+    Para a utilização dessa action se faz necessário alterar o arquivo que da view
+    responsável pela edição. 
+
+\subsection{Groovy Server Pages}
+
+    A tecnologia utilizada para renderização das views é o framework Groovy Server 
+    Pages, GSP. Similar ao Java Server Pages, o GSP permite a criação de dinâmica 
+    de conteúdo misturando conteúdo estático e dinâmico através de tags html e da
+    biblioteca de tags embutidas as taglibs. É possível ainda criar as próprias tags
+    customizadas.
+    
+    Para a action desenvolvida na seção anterior não será criada nenhuma taglib 
+    customizada, mas serão usadas algumas taglibs do framework. A listagem \ref{associarContatoViewV1}
+    mostra o trecho de código alterado na view de edição de grupos.
+    
+    \lstinputlisting[
+                     style=java,
+                     caption=Trecho de código da view de edição de grupos responsável por associar contatos,
+                     label=associarContatoViewV1
+                   ]
+                   {src/groovy/agenda/grupo/associarContatoViewV1.gsp}
+    
+    Em resumo, esse trecho de código é composto pela listagem de todos os
+    contatos cadastrados. Cada um com \emph{checkbox} representando a existência 
+    ou ausência do relacionamento entre ele e grupo atualmente sendo editado 
+    de acordo com o estado da seleção.
+    
+    Na linha 4 se vê a utilização da taglib \texttt{message} responsável por exibir
+    mensagens de texto retiradas dos arquivos de internacionalização disponíveis 
+    na pasta \emph{grails-app/i18n}. A linha 12 exibe uma forma de iteração nos 
+    itens de uma coleção através da tag \texttt{each}. Uma referência completa 
+    sobre as tags gsp pode ser encontrada na página \url{http://grails.org/doc/latest/guide/single.html#6.2.2 GSP Tags}. 
+    
+    Um detalhe a ser notado está na linha 16, uma associação do evento de clique 
+    no \emph{checkbox} a uma função \texttt{javascript}, responsável por executar 
+    uma chamada à \emph{action} \texttt{associarContato} do \texttt{GrupoController}.
+    A listagem \ref{associarContatoScriptV1} exibe o trecho com o script necessário
+    ao funcionamento do código.
+    
+    \lstinputlisting[
+                     style=java,
+                     caption=Javascript de chamada à action associarContato do GrupoController,
+                     label=associarContatoScriptV1
+                   ]
+                   {src/groovy/agenda/grupo/associarContatoScriptV1.js}
+    
     
     
 %iniciar uma subseção e falar sobre o grails
