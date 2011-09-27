@@ -11,3 +11,6 @@ target/
 *.log
 *.class
 *.war
+.classpath
+.project
+classes/
