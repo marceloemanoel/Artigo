@@ -6,7 +6,8 @@
           "contato.id":contatoId,
           "grupo.id": "${grupoInstance.id}"
         },
-        dataType: "json"
+        dataType: "json",
+        type: "POST"
       });
     }        
 </script>

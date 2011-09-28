@@ -1040,12 +1040,12 @@
     contatos cadastrados. Cada um com \emph{checkbox} representando a existência 
     ou ausência do relacionamento entre ele e grupo atualmente sendo editado 
     de acordo com o estado da seleção.
-    
-    Na linha 4 se vê a utilização da taglib \texttt{message} responsável por exibir
+
+    Na linha 4 se vê a utilização da \texttt{taglib} \texttt{message} responsável por exibir
     mensagens de texto retiradas dos arquivos de internacionalização disponíveis 
     na pasta \emph{grails-app/i18n}. A linha 12 exibe uma forma de iteração nos 
-    itens de uma coleção através da tag \texttt{each}. Uma referência completa 
-    sobre as tags gsp pode ser encontrada na página \url{http://grails.org/doc/latest/guide/single.html#6.2.2 GSP Tags}. 
+    itens de uma coleção através da \emph{tag} \texttt{each}. Uma referência completa 
+    sobre as \emph{tags} \texttt{gsp} pode ser encontrada na página \url{http://grails.org/doc/latest/guide/single.html#6.2.2 GSP Tags}. 
     
     Um detalhe a ser notado está na linha 16, uma associação do evento de clique 
     no \emph{checkbox} a uma função \texttt{javascript}, responsável por executar 
@@ -1060,31 +1060,93 @@
                    ]
                    {src/groovy/agenda/grupo/associarContatoScriptV1.js}
     
+    Por questões de visualização a chamada na linha 3 foi quebrada em mais de uma linha. 
+    O funcionamento básico da chamada é executar uma requisição http utilizando o método
+    \texttt{POST} para a \emph{url} \url{associarContato} que é relativa ao \emph{path} 
+    atual. O resultado é que ao executar este método a \emph{action} \texttt{associarContato} 
+    vai ser executada e ao final o contato vai estar associado ao grupo ou removido dele.   
     
-    
-%iniciar uma subseção e falar sobre o grails
-%incluir:
-%   introdução ao grails -> DONE
-%   instalação -> DONE
-%   descrição da aplicação (Google Contacts Clone) -> DONE
-%   script de criação da aplicação -> DONE
-%   convention-over-configuration -> DONE
-%   domain classes -> DONE
-%   controllers -> DONE
-%   scaffolding -> DONE
-%   validação -> DONE
-%   GORM
-%       - Relacionamentos:
-%           1-para-1 -> DONE
-%           1-para-muitos -> DONE
-%           muitos-para-muitos -> DONE
-%       - Finders
-%           
-%   views
-%       GSP
-%   plugins
-%\section{Figures and Captions}\label{sec:figs}
+\subsection{Instalando Plugins}
 
+    A arquitetura do framework permite a criação e instalação de plugins permitindo assim,
+    que novas funcionalidades sejam agregadas sem alterar o código original. Para executar
+    a tarefa da seção anterior foi instalado o \emph{plugin jquery}. O plugin permite a 
+    utilização do \emph{jQuery} nos projetos \emph{Grails}.
+    
+    O jQuery é um framework javascript também muito customizável e bastante difundido.
+    Para a instalação do plugin é preciso executar o comando:
+    
+    \begin{lstlisting}[basicstyle={\small \ttfamily}]
+           grails install-plugin jquery
+    \end{lstlisting}
+    
+    Automáticamente o Grails irá criar toda a infraestrutura necessária para a utilização
+    do plugin. No caso específico do plugin jquery existe ainda um passo a ser executado.
+    Adicionar a seguinte linha ao final da seção \emph{head} arquivo \emph{grais-app/views/main.gsp}
+    
+    \begin{lstlisting}[style=Java]
+            <g:javascript library="jquery" plugin="jquery"/>
+    \end{lstlisting}
+
+    %iniciar uma subseção e falar sobre o grails
+    %incluir:
+    %   introdução ao grails -> DONE
+    %   instalação -> DONE
+    %   descrição da aplicação (Google Contacts Clone) -> DONE
+    %   script de criação da aplicação -> DONE
+    %   convention-over-configuration -> DONE
+    %   domain classes -> DONE
+    %   controllers -> DONE
+    %   scaffolding -> DONE
+    %   validação -> DONE
+    %   GORM
+    %       - Relacionamentos:
+    %           1-para-1 -> DONE
+    %           1-para-muitos -> DONE
+    %           muitos-para-muitos -> DONE
+    %       - Finders
+    %           
+    %   views -> DONE
+    %       GSP -> DONE
+    %   plugins -> DONE
+    %\section{Figures and Captions}\label{sec:figs}
+
+    
+\section{Conclusão}
+
+    Desde seu surgimento, a plataforma Java se destaca como uma ótima alternativa
+    para o desenvolvimento de aplicações \emph{web}. Diversos \emph{frameworks} surgiram para 
+    proporcionar reutilização de código e aumento de produtividade. Apesar disto,
+    outras tecnologias têm se destacado no cenário de desenvolvimento de software
+    para a web. 
+    
+    A primeira parte deste artigo abordou os conceitos básicos da linguagem \texttt{Groovy} e
+    do \emph{framework} \texttt{Grails} e como essas tecnologias podem ser utilizadas 
+    para a criação de aplicações \emph{web} com pouco esforço. 
+    
+    Na segunda parte foram exibidas algumas características dinâmicas da linguagem 
+    \texttt{Groovy}, sua redefinição de operadores, uso de coleções simplificado, definição
+    de métodos e o conceito de closures.
+    
+    Por último, na terceira do artigo destacou-se o framework Grails e suas características
+    principais, a criação de Domain Classes, a validação de propriedades, a criação de Controllers,
+    a utilização de Scaffolding, os relacionamentos de entidades do domínio através do
+    GORM, a criação de Views finalizando com a construção de uma chamada Ajax a uma action
+    através da utilização de plugins. Todos os conceitos exibidos nessa parte do artigo
+    possuem exemplos práticos através de uma aplicação que foi desenvolvida utilizando 
+    as técnicas e os conceitos abordados anteriormente.
+    
+    Apesar de cobrir boa parte do \emph{framework}, ainda existem características que 
+    merecem atenção. Devido ao escopo deste artigo estas não puderam ser abordadas. 
+    Como forma de continuação dos estudos no assunto, sugere-se a análise de técnicas 
+    como Desenvolvimento Orientado a Testes, \texttt{TDD}, devido à grande facilidade 
+    e ao grande estímulo da comunidade de \emph{software}  e do \emph{framework} a esta
+    técnica. Além disso, convém estudar a integração do \texttt{Grails} com  outros 
+    \emph{frameworks} web. Algumas sugestões a seguir, \texttt{Spring Security} 
+    (\url{http://static.springsource.org/spring-security/site/}), que provê características
+    de segurança e o \texttt{Apache Solar} (\url{http://lucene.apache.org/solr/}) que 
+    provê características de indexação e busca textual.
+    
 \bibliographystyle{sbc}
 \bibliography{artigo}
 
