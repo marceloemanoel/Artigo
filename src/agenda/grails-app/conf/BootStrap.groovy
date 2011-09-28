@@ -15,7 +15,9 @@ class BootStrap {
             contato.addToPropriedades(new WebSite(valor: "http://contato${index}.com"))
             contato.addToPropriedades(new NumeroCelular(valor: "+55 (85) 8888-8888"))
             contato.save()
-            todosContatos.addToContatos(contato);
+            if(index % 2 == 0){
+                todosContatos.addToContatos(contato);   
+            }
         }
         
         todosContatos.save()
